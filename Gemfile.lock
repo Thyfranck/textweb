@@ -61,6 +61,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    commonjs (0.2.6)
     daemons (1.1.9)
     devise (3.0.2)
       bcrypt-ruby (~> 3.0)
@@ -87,7 +88,7 @@ GEM
       has_scope (~> 0.6.0.rc)
       responders (~> 1.0.0.rc)
     journey (1.0.4)
-    jquery-rails (3.0.4)
+    jquery-rails (2.3.0)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.0)
@@ -96,6 +97,11 @@ GEM
     kaminari (0.14.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    less (2.3.2)
+      commonjs (~> 0.2.6)
+    less-rails (2.3.3)
+      actionpack (>= 3.1)
+      less (~> 2.3.1)
     libv8 (3.11.8.17)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -183,6 +189,11 @@ GEM
     treetop (1.4.14)
       polyglot
       polyglot (>= 0.3.1)
+    twitter-bootstrap-rails (2.2.8)
+      actionpack (>= 3.1)
+      execjs
+      rails (>= 3.1)
+      railties (>= 3.1)
     tzinfo (0.3.37)
     uglifier (2.1.2)
       execjs (>= 0.3.0)
@@ -197,7 +208,8 @@ DEPENDENCIES
   activeadmin
   coffee-rails (~> 3.2.1)
   execjs
-  jquery-rails
+  jquery-rails (= 2.3.0)
+  less-rails
   mysql2
   rails (= 3.2.14)
   rvm-capistrano (>= 1.1.0)
@@ -205,4 +217,5 @@ DEPENDENCIES
   sorcery
   therubyracer
   thin
+  twitter-bootstrap-rails
   uglifier (>= 1.0.3)
