@@ -12,6 +12,8 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
+  host: localhost
+  timeout: 5000
   database: textweb_development
   pool: 5
   username: root

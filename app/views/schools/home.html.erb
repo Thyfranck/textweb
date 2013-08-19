@@ -1,0 +1,8 @@
+<h1>Schools#home</h1>
+<p>Find me in app/views/schools/home.html.erb</p>
+
+<% @courses.each do |course| %>
+  <div style="display: inline-block; width: 200px; height: 200px; border: 1px solid green;float: left">
+    <%= link_to course.name, course_path(course), :target => "_blank" %>
+  </div>
+<% end %>

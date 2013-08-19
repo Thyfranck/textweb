@@ -1,0 +1,20 @@
+<%= form_tag resend_activation_email_user_path(@user), :method => :post do  %>
+  Have not got email yet ? <%= submit_tag "Resend Email" %>
+<% end %>
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<%= form_tag resend_activation_email_user_path(@user), :method => :post do %>
+  Also, you can try using a different email address
+
+  <div class="field">
+    <%= label_tag :email %>
+    <%= text_field_tag :email, params[:email] %>
+  </div>
+  <%= submit_tag "Try with new email" %>
+<% end %>
+
+
