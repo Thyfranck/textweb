@@ -3,6 +3,9 @@ class Link < ActiveRecord::Base
 
   belongs_to :course
 
+  has_many :rates
+  has_many :rater_users, :class_name => "User", :foreign_key => "user_id", :through => :rates
+
   belongs_to :creator, polymorphic: true
 
 end

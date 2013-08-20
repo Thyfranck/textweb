@@ -1,6 +1,8 @@
 class SessionsController < ApplicationController
 
   before_filter :require_school_session, :except => [:destroy]
+  before_filter :redirect_current_user_to_home, :except => [:destroy]
+  layout "home"
 
   def new
   end
@@ -19,4 +21,11 @@ class SessionsController < ApplicationController
     logout
     redirect_to root_url, :notice => "Logged out!"
   end
+
+  private
+
+  def redirect_current_user_to_home
+    redirect_to home_schools_path if current_user
+  end
+
 end

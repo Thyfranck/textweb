@@ -22,6 +22,7 @@ Textweb::Application.routes.draw do
     collection do
       get :set_session
       get :home
+      get :courses
     end
   end
 

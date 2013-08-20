@@ -1,4 +1,4 @@
-<h1>Sign Up</h1>
+<h3>Sign Up</h3>
 
 <%= form_for @user do |f| %>
   <% if @user.errors.any? %>
@@ -23,5 +23,5 @@
     <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation %>
   </div>
-  <div class="actions"><%= f.submit %></div>
+  <div class="actions"><%= f.submit :class => "btn btn-primary" %></div>
 <% end %>

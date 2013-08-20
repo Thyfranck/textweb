@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
 
   before_filter :require_school_session, :except => [:email_verification]
+#  render :layout => 'home'
+  layout "home"
 
   def new
     @user = User.new

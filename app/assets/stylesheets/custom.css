@@ -1,0 +1,39 @@
+footer {
+    margin-top: 70px;
+}
+
+body {
+    background-color: #d9e9f6;
+}
+
+label#remember_me {
+    width: 200px;
+    display: inline-block;
+    float: left;
+    margin-top: 1px;
+}
+
+input#remember_check {
+    width: 40px;
+    display: inline-block;
+    float: left;
+    margin-right: 9px;
+    margin-bottom: 20px;
+}
+
+.clear {
+    clear: both;
+}
+
+h1,h2,h3,h4 {
+    color: #777777;
+}
+
+.item {
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    border: 1px solid green;
+    float: left;
+    margin: 10px;
+}

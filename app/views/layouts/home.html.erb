@@ -13,7 +13,7 @@
     <![endif]-->
 
     <%= stylesheet_link_tag "application", :media => "all" %>
-    
+
     <!-- Size should be 32 x 32 pixels -->
     <%#= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
 
@@ -23,17 +23,18 @@
 
     <%= render 'shared/top_nav' %>
 
-    
     <div class="container-fluid">
-      <%= bootstrap_flash %>
       <div class="row-fluid">
-        
-        <%= yield %>
-        
+        <div class="span1">
+        </div><!--/span-->
+        <div class="span9">
+          <%= bootstrap_flash %>
+          <%= yield %>
+        </div>
       </div><!--/row-->
 
       <footer>
-        <%#*<p>&copy; Company 2013</p>%>
+        <p>&copy; Company 2013</p>
       </footer>
 
     </div> <!-- /container -->
