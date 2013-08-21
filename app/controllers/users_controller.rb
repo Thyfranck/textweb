@@ -46,7 +46,7 @@ class UsersController < ApplicationController
     if (@user = User.load_from_activation_token(params[:id]))
       @user.activate!
       auto_login(@user)
-      redirect_to(home_schools_path, :notice => t("flash.varified_email_notice"))
+      redirect_to(home_schools_path, :notice => "Your account is now verified."
     else
       not_authenticated
     end
