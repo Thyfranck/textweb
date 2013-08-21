@@ -2,9 +2,9 @@
 ActionMailer::Base.smtp_settings = {
   :address              => "smtp.gmail.com",
   :port                 => 587,
-  :domain               => "localhost",
-  :user_name            => "tanim@iconsbd.com",
-  :password             => "tanimotogj456",
+  :domain               => "textweb.com",
+  :user_name            => "contact@mhbweb.com",
+  :password             => "qwerty$123",
   :authentication       => "plain",
   :enable_starttls_auto => true
 }
