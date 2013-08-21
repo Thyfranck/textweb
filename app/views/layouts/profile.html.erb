@@ -28,8 +28,21 @@
       <%= bootstrap_flash %>
       <div class="row-fluid">
 
-        <%= yield %>
-        
+        <div class="span3">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header">Sidebar</li>
+              <li>
+                <%= link_to "Reset Password", profile_user_path(current_user) if current_user  %>
+                <%= link_to "Reset Password", new_password_reset_path unless current_user  %>
+              </li>
+            </ul>
+          </div><!--/.well -->
+        </div><!--/span-->
+        <div class="span9">
+          <%= yield %>
+        </div>
+
       </div><!--/row-->
 
       <footer>

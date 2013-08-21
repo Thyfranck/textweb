@@ -12,8 +12,8 @@ class SessionsController < ApplicationController
     if user
       redirect_back_or_to home_schools_path, :notice => "Logged in!"
     else
-      render :new
       flash.now.alert = "Email or password was invalid."
+      render :new
     end
   end
 
@@ -24,8 +24,6 @@ class SessionsController < ApplicationController
 
   private
 
-  def redirect_current_user_to_home
-    redirect_to home_schools_path if current_user
-  end
+  
 
 end

@@ -13,4 +13,8 @@ class ApplicationController < ActionController::Base
     redirect_to root_path if session[:school].nil?
   end
 
+  def redirect_current_user_to_home
+    redirect_to home_schools_path if current_user
+  end
+
 end

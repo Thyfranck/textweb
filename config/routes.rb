@@ -1,5 +1,7 @@
 Textweb::Application.routes.draw do
   
+  resources :password_resets
+
   root :to => 'public#index'
 
   get "signup" => "users#new", :as => "signup"
@@ -15,6 +17,7 @@ Textweb::Application.routes.draw do
       get :email_verification
       get :email_confirmation_page
       post :resend_activation_email
+      get :profile
     end
   end
 

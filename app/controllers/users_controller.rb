@@ -1,7 +1,10 @@
 class UsersController < ApplicationController
 
   before_filter :require_school_session, :except => [:email_verification]
-#  render :layout => 'home'
+  before_filter :require_login, :only => [:profile]
+  before_filter :require_same_user, :only => [:profile]
+  before_filter :redirect_current_user_to_home, :except => [:profile]
+  
   layout "home"
 
   def new
@@ -49,6 +52,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def profile
+    render :layout => "profile"
+  end
 
+  private
+
+  def require_same_user
+    redirect_to home_schools_path if current_user and current_user.id != params[:id].to_i
+  end
 
 end

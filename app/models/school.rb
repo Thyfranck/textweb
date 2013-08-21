@@ -3,4 +3,6 @@ class School < ActiveRecord::Base
 
   has_many :courses
 
+  COURSE_PER_PAGE = 10
+
 end

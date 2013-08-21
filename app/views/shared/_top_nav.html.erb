@@ -12,9 +12,9 @@
                 <li><%= link_to "Home", home_schools_path  %></li>
                 <% if current_user %>
                   <li><%= link_to "Sign Out", logout_path  %></li>
-                  <li><%= link_to "Profile", "/path3"  %></li>
+                  <li><%= link_to "Profile", profile_user_path(current_user)  %></li>
                   <li>
-                    <%= link_to current_user.email, "/path3" %>
+                    <%= link_to current_user.email, profile_user_path(current_user) %>
                   </li>
                 <% else %>
                   <li><%= link_to "Sign In", login_path  %></li>

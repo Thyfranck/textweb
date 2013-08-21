@@ -1,0 +1,10 @@
+<% if @courses.count == 0 %>
+  empty
+<% else %>
+  <% @courses.each_with_index do |course, index| %>
+    <% if index > 0 %>
+      ||separator||
+    <% end %>
+    <%=  render "courses/single_course", course: course %>
+  <% end %>
+<% end %>

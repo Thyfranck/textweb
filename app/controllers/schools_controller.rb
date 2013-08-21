@@ -4,18 +4,16 @@ class SchoolsController < ApplicationController
   before_filter :require_login, :except => [:set_session]
 
   def home
-    @courses = School.find(session[:school]).courses
-#    render :layout => false
+    @school = School.find(session[:school])
+    @courses = @school.courses.order("courses.name ASC").limit(School::COURSE_PER_PAGE)
   end
 
   def courses
-    per_page = 4
     page = params[:page].to_i
-    courses = School.find(session[:school]).courses.limit(per_page).offset((page - 1)*per_page)
-    render :json => {"total" => courses.count, "course" => courses}.to_json
-#    respond_to do |format|
-#      format.json
-#    end
+    @courses = School.find(session[:school]).courses.order("courses.name ASC").limit(School::COURSE_PER_PAGE).offset((page - 1)*School::COURSE_PER_PAGE)
+    respond_to do |format|
+      format.js
+    end
   end
 
   def set_session
