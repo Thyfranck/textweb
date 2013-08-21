@@ -1,5 +1,5 @@
 ActiveAdmin.register Link do
-
+actions :index
   controller do
     # This code is evaluated within the controller class
 

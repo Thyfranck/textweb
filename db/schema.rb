@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130819144815) do
+ActiveRecord::Schema.define(:version => 20130821111109) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(:version => 20130819144815) do
 
   create_table "links", :force => true do |t|
     t.integer  "course_id"
-    t.string   "url"
+    t.text     "url"
     t.text     "description"
     t.integer  "creator_id"
     t.string   "creator_type"
@@ -70,7 +70,6 @@ ActiveRecord::Schema.define(:version => 20130819144815) do
     t.integer  "link_id"
     t.integer  "user_id"
     t.boolean  "plus"
-    t.boolean  "minus"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

@@ -37,3 +37,44 @@ h1,h2,h3,h4 {
     float: left;
     margin: 10px;
 }
+
+.arrow-up {
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+
+    border-bottom: 15px solid green;
+}
+
+.arrow-down {
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+
+    border-top: 15px solid red;
+}
+
+.link-desc {
+    display: inline-block;
+    float: left;
+    width: 400px;
+}
+
+.arrow-container {
+    display: inline-block;
+    float: left;
+    width: 200px;
+}
+
+.single-arrow {
+    width: 100px;
+    float: left;
+}
+
+.arrow-text {
+    display: inline-block;
+    width: 100px;
+    height: 15px;
+}
