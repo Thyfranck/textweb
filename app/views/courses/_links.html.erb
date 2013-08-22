@@ -1,39 +1,71 @@
 <% if @approved_links.any? %>
   <h5>Approved Links of this Topic</h5>
   <legend></legend>
-  <div class="span12 well" style="max-height: 280px;  overflow-y: scroll;margin-left: 0px">
+  <div class="span12 well" style="max-height: 280px; overflow-y: auto;overflow-x: hidden;margin-left: 0px">
     <% @approved_links.each_with_index do |link, index| %>
-      <div class="span12" style="<%= "margin-left:20px" if index == 0 %>">
-        <%= link_to "#{link.url}", link.url, :target => "_blank" %>
-      </div>
-      <div class="span12">
-        <%= link.description %>
-      </div>
+      <%= link_to link_path(link) do %>
+        <div class="link-hover single-link underline">
+          <div class="row-fluid">
+            <div class="span2 offset1 attr-name">
+              URL:
+            </div>
+            <div class="span9 attr-val">
+              <%= link.url %>
+            </div>
+          </div>
+          <div class="row-fluid single-link">
+            <div class="span2 offset1 attr-name">
+              Description:
+            </div>
+            <div class="span9 attr-val">
+              <%= link.description %>
+            </div>
+          </div>
+        </div>
+      <% end %>
     <% end %>
   </div>
 <% end %>
 <% if @unapproved_links.any? %>
   <h5>User submitted links of this Course</h5>
   <legend></legend>
-  <div class="span12 well" style="max-height: 280px; margin-left: 0px;overflow-y: scroll">
+  <div class="span12 well" style="max-height: 280px; margin-left: 0px;overflow-y: auto;overflow-x: hidden;">
     <% @unapproved_links.each_with_index do |link, index| %>
-      <div class="span12" style="<%= "margin-left:20px;margin-bottom : 10px;" if index == 0 %>">
-        <div class="link-desc">
-          <%= link_to "#{link.url}", link.url, :target => "_blank" %><br />
-          <%= link.description %>
-        </div>
-        <div class="arrow-container">
-          <div class="single-arrow">
-            <div class="arrow-up" id="<%= link.id %>"></div>
-            <div class="arrow-text" id ="up_<%= link.id %>"><%= link.plus_count %></div>
+
+
+      <div class="row-fluid single-link" style="border-bottom: 1px solid #777777;margin-bottom: 15px;">
+        <%= link_to link_path(link) do %>
+          <div class="span9 link-hover">
+            <div class="row-fluid single-res">
+              <div class="span2 offset1 attr-name">
+                URL:
+              </div>
+              <div class="span9 attr-val">
+                <%= link.url %>
+              </div>
+            </div>
+            <div class="row-fluid single-res">
+              <div class="span2 offset1 attr-name">
+                Description:
+              </div>
+              <div class="span9 attr-val">
+                <%= link.description %>
+              </div>
+            </div>
           </div>
-          <div class="single-arrow">
-            <div class="arrow-text" id="down_<%= link.id %>"><%= link.minus_count %></div>
-            <div class="arrow-down" id="<%= link.id %>"></div>
+        <% end %>
+        <div class="span3">
+          <div class="row-fluid">
+            <div class="span6">
+              <div class="arrow-up" id="<%= link.id %>"></div>
+              <div class="arrow-text" id ="up_<%= link.id %>"><%= link.plus_count %></div>
+            </div>
+            <div class="span6">
+              <div class="arrow-text" id="down_<%= link.id %>"><%= link.minus_count %></div>
+              <div class="arrow-down" id="<%= link.id %>"></div>
+            </div>
           </div>
-          <div class="clear"></div>
         </div>
-        <div class="clear"></div>
       </div>
     <% end %>
   </div>

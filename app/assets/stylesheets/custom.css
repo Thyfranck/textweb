@@ -91,6 +91,7 @@ h1,h2,h3,h4 {
     border-right: 15px solid transparent;
 
     border-bottom: 15px solid green;
+    cursor: pointer;
 }
 
 .arrow-down {
@@ -100,6 +101,7 @@ h1,h2,h3,h4 {
     border-right: 15px solid transparent;
 
     border-top: 15px solid red;
+    cursor: pointer;
 }
 
 .link-desc {
@@ -121,8 +123,9 @@ h1,h2,h3,h4 {
 
 .arrow-text {
     display: inline-block;
-    width: 100px;
+    width: 30px;
     height: 15px;
+    text-align: center;
 }
 
 .link-view {
@@ -157,4 +160,23 @@ h1,h2,h3,h4 {
 .single-res div.attr-name {
     color: #777777;
     font-size: 14px;
+}
+
+.single-link  div.attr-name {
+    color: #777777;
+    font-size: 14px;
+}
+
+.single-link div.attr-val {
+    color: #333333;
+    font-size: 14px;
+}
+
+div.link-hover:hover {
+    background-color: rgba(0, 0, 255, 0.3);
+}
+
+div.underline {
+    border-bottom: 1px solid #777777;
+    margin-bottom: 10px;
 }

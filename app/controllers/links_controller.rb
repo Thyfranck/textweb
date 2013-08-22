@@ -3,7 +3,7 @@ class LinksController < ApplicationController
     @link = current_user.links.create(params[:link])
     redirect_to request.referrer
   end
-
+    
   def rate
     @link = Link.find(params[:id])
     @rate_type = params[:rate]
@@ -19,6 +19,9 @@ class LinksController < ApplicationController
 
   def show
     @link = Link.find(params[:id])
+    @course = @link.topic.course
+    @topics = @course.topics
+    @topic_id = @link.topic.id
     @youtube_link = @link.youtube?
   end
 

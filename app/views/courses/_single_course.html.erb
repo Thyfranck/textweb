@@ -1,6 +1,6 @@
 <div class="item" >
   <% rand = (200..300).to_a.sample %>
   <div style="display: inline-block; height: <%= rand %>px; ">
-    <%= link_to course.name, course_path(course), :target => "_blank", :class => "course-name", :style => "position:relative;top:#{(rand/2)-10}px" %>
+    <%= link_to course.name, course_path(course), :class => "course-name", :style => "position:relative;top:#{(rand/2)-10}px" %>
   </div>
 </div>
