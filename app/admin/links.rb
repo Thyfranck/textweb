@@ -1,26 +1,15 @@
 ActiveAdmin.register Link do
- # actions :index
-  
-  controller do
-    # This code is evaluated within the controller class
 
-    def create
-      # override the action here
-      link = current_admin_user.links.new(params[:link])
-      link.approved = true
-      link.save!
-      redirect_to admin_links_path
-    end
+  action_item only:[:show] do
+    link_to "Approve", approve_admin_link_path
   end
 
-  form do |f|
-    f.inputs "Details" do
-      f.input :course
-      f.input :url
-      f.input :description
-      f.input :approved
-    end
-    f.actions
+  member_action :approve do
+    @link = Link.find(params[:id])
+    @link.update_attribute(:approved, true)
+    @link_creator = @link.creator
+    @link_creator.update_attribute(:point, @link_creator.point + 1)
+    redirect_to admin_link_path(@link)
   end
   
 end

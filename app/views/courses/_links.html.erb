@@ -1,0 +1,40 @@
+<% if @approved_links.any? %>
+  <h5>Approved Links of this Topic</h5>
+  <legend></legend>
+  <div class="span12 well" style="max-height: 280px;  overflow-y: scroll;margin-left: 0px">
+    <% @approved_links.each_with_index do |link, index| %>
+      <div class="span12" style="<%= "margin-left:20px" if index == 0 %>">
+        <%= link_to "#{link.url}", link.url, :target => "_blank" %>
+      </div>
+      <div class="span12">
+        <%= link.description %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+<% if @unapproved_links.any? %>
+  <h5>User submitted links of this Course</h5>
+  <legend></legend>
+  <div class="span12 well" style="max-height: 280px; margin-left: 0px;overflow-y: scroll">
+    <% @unapproved_links.each_with_index do |link, index| %>
+      <div class="span12" style="<%= "margin-left:20px;margin-bottom : 10px;" if index == 0 %>">
+        <div class="link-desc">
+          <%= link_to "#{link.url}", link.url, :target => "_blank" %><br />
+          <%= link.description %>
+        </div>
+        <div class="arrow-container">
+          <div class="single-arrow">
+            <div class="arrow-up" id="<%= link.id %>"></div>
+            <div class="arrow-text" id ="up_<%= link.id %>"><%= link.plus_count %></div>
+          </div>
+          <div class="single-arrow">
+            <div class="arrow-text" id="down_<%= link.id %>"><%= link.minus_count %></div>
+            <div class="arrow-down" id="<%= link.id %>"></div>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

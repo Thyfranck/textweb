@@ -6,17 +6,9 @@ class Rate < ActiveRecord::Base
 
   def update_link_rating
     if self.plus == true
-      if self.link.plus_count
-        self.link.plus_count = self.link.plus_count + 1
-      else
-        self.link.plus_count = 1
-      end
+      self.link.plus_count = self.link.plus_count + 1
     else
-      if self.link.minus_count
-        self.link.minus_count = self.link.minus_count + 1
-      else
-        self.link.minus_count = 1
-      end
+      self.link.minus_count = self.link.minus_count + 1
     end
     self.link.save
   end

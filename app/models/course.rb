@@ -1,6 +1,7 @@
 class Course < ActiveRecord::Base
-  attr_accessible :name, :school_id
+  attr_accessible :name, :school_id, :description
 
   belongs_to :school
-  has_many :links
+
+  has_many :topics
 end

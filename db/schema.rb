@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130821111109) do
+ActiveRecord::Schema.define(:version => 20130822110606) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -49,21 +49,22 @@ ActiveRecord::Schema.define(:version => 20130821111109) do
   create_table "courses", :force => true do |t|
     t.integer  "school_id"
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.text     "description"
   end
 
   create_table "links", :force => true do |t|
-    t.integer  "course_id"
+    t.integer  "topic_id"
     t.text     "url"
     t.text     "description"
     t.integer  "creator_id"
     t.string   "creator_type"
-    t.integer  "plus_count"
-    t.integer  "minus_count"
-    t.boolean  "approved"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.integer  "plus_count",   :default => 0
+    t.integer  "minus_count",  :default => 0
+    t.boolean  "approved",     :default => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
   create_table "rates", :force => true do |t|
@@ -80,12 +81,19 @@ ActiveRecord::Schema.define(:version => 20130821111109) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "topics", :force => true do |t|
+    t.integer  "course_id"
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "email"
     t.string   "crypted_password"
     t.string   "salt"
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
     t.string   "remember_me_token"
     t.datetime "remember_me_token_expires_at"
     t.string   "reset_password_token"
@@ -94,6 +102,7 @@ ActiveRecord::Schema.define(:version => 20130821111109) do
     t.string   "activation_state"
     t.string   "activation_token"
     t.datetime "activation_token_expires_at"
+    t.integer  "point",                           :default => 0
   end
 
   add_index "users", ["activation_token"], :name => "index_users_on_activation_token"
