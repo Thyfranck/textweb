@@ -1,2 +1,21 @@
-<h3>Reset Password</h3>
-<%= render "sessions/forgot_password_form" %>
+<h3>Change Password</h3>
+
+<%= form_tag change_password_user_path(current_user), :method => :post do %>
+  Insert Email address to get reset password link.
+  <br/>
+  <br/>
+  <div class="field">
+
+    <div class="field">
+      <%= label_tag :password, "New Password" %>
+      <%= password_field_tag :password %>
+    </div>
+    <div class="field">
+      <%= label_tag :password_confirmation, "Confirm New Password" %>
+      <%= password_field_tag :password_confirmation %>
+    </div>
+
+
+    <%= submit_tag "Change my password!", :class => "btn btn-primary" %>
+  </div>
+<% end %>

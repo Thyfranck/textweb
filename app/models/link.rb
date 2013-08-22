@@ -21,4 +21,14 @@ class Link < ActiveRecord::Base
     rates = self.rates
     return rates.where(:user_id => user_id).present? ? true : false
   end
+
+  def youtube?
+    uri = URI.parse(url)
+    uri.host =~ /youtube\.com/
+  end
+
+  def iframe_url
+    return url =~ /^http:\/\// ? url : "http://" + url
+  end
+
 end

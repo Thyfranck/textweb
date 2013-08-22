@@ -7,6 +7,7 @@ Textweb::Application.routes.draw do
   get "signup" => "users#new", :as => "signup"
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
+  get '/links/:id', to: 'links#show', :as => 'link'
 
   match '/rate' => 'links#rate', :as => 'rate'
   
@@ -20,6 +21,7 @@ Textweb::Application.routes.draw do
       get :email_confirmation_page
       post :resend_activation_email
       get :profile
+      post :change_password
     end
   end
 

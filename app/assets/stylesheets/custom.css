@@ -53,12 +53,12 @@ h1,h2,h3,h4 {
     background-color: #d9e9f6;
     padding-left: 10px;
     padding-right: 10px;
-    
+
 }
 
 #container {
     padding: 0 10px;
-    
+
 }
 
 #container .item {
@@ -71,7 +71,7 @@ h1,h2,h3,h4 {
     font-size: 20px;
     font-weight: 200;
     text-shadow: 0 1px 0 #FFFFFF;
-    
+
 }
 
 .course-name:hover {
@@ -123,4 +123,38 @@ h1,h2,h3,h4 {
     display: inline-block;
     width: 100px;
     height: 15px;
+}
+
+.link-view {
+    width: 80%;
+    height: 450px;
+    border: none;
+    margin: 15px 0;
+}
+
+.frame-wrapper {
+    /*    margin-top: 50px;*/
+
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    padding-top: 25px;
+    height: 0;
+
+}
+
+.frame-wrapper #ytplayer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 80%;
+}
+
+.single-res {
+    margin-bottom: 10px;
+}
+
+.single-res div.attr-name {
+    color: #777777;
+    font-size: 14px;
 }

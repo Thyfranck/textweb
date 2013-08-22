@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
 
   before_filter :require_school_session, :except => [:email_verification]
-  before_filter :require_login, :only => [:profile]
-  before_filter :require_same_user, :only => [:profile]
-  before_filter :redirect_current_user_to_home, :except => [:profile]
+  before_filter :require_login, :only => [:profile, :change_password]
+  before_filter :require_same_user, :only => [:profile, :change_password]
+  before_filter :redirect_current_user_to_home, :except => [:profile, :change_password]
   
   layout "home"
 
@@ -54,6 +54,16 @@ class UsersController < ApplicationController
 
   def profile
     render :layout => "profile"
+  end
+
+  def change_password
+    if current_user.update_attributes(:password => params["password"], :password_confirmation => params["password_confirmation"])
+      flash[:notice] = "Password changed successfully"
+      redirect_to profile_user_path(current_user)
+    else
+      flash[:alert] = "Sorry there was a problem"
+      render :profile, :layout => "profile"
+    end
   end
 
   private
