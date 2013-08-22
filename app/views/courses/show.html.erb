@@ -1,69 +1,57 @@
-<div class="span2 well offset1" style="height:600px">
+<div class="course_id" id ="/courses/<%= @course.id %>"></div>
+<div class="span12 well">
+  <div class="span12 well" style="height:400px">
+    <%= @course.description  %>
+  </div>
+
+  <div class="span3 well" style="height:600px;margin-left: 0px">
+    <ul class="nav nav-list">
+      <li class="nav-header"><h5>Topics under this course</h5></li>
+      <% @topics.each do |topic| %>
+        <li class="<%= "active" if @topic_id.to_i == topic.id %>">
+          <%= link_to topic.title, course_path(@course, :topic_id => topic.id) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+
+  <div class="span9 well" style="height:1100px">
+    <% unless @topic %>
+    <% else %>
+      <% if @approved_links.any? or @unapproved_links.any? %>
+        <div class="dynamic">
+          <%= render 'links' %>
+        </div>
+      <% else %>
+        <legend>
+          <h4>No link submitted yet. Would you like to post a link under this topic?</h4>
+        </legend>
+      <% end %>
+      <div class="span12 well" style="max-height: 300px; margin-left: 0px">
+        <h5>New Link</h5>
+        <legend></legend>
+        <%= form_for @link, :html => { :class => 'form-horizontal' } do |f| %>
+          <%= f.hidden_field :topic_id, :value => @topic.id %>
+          <div class="control-group">
+            <%= f.label :url, :class => 'control-label' %>
+            <div class="controls">
+              <%= f.text_field :url, :class => 'text_field',:required => true %>
+            </div>
+          </div>
+          <div class="control-group">
+            <%= f.label :description, :class => 'control-label' %>
+            <div class="controls">
+              <%= f.text_area :description, :class => 'text_field', :rows => '2', :required => true %>
+            </div>
+          </div>
+          <div class="form-actions">
+            <%= f.submit nil, :class => 'btn btn-primary' %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 
 </div>
 
-<div class="span8 well" style="height:1100px">
-  <h5>Approved Links of this Course</h5>
-  <legend></legend>
-  <div class="span12 well" style="height: 280px;  overflow-y: scroll;margin-left: 0px">
-    <% @approved_links.each_with_index do |link, index| %>
-      <div class="span12" style="<%= "margin-left:20px" if index == 0 %>">
-        <%= link_to "#{link.url}", link.url, :target => "_blank" %>
-      </div>
-      <div class="span12">
-        <%= link.description %>
-      </div>
-    <% end %>
-  </div>
-  <h5>User submitted links of this Course</h5>
-  <legend></legend>
-  <div class="span12 well" style="height: 280px; margin-left: 0px;overflow-y: scroll">
-    <% @unapproved_links.each_with_index do |link, index| %>
-      <div class="span12" style="<%= "margin-left:20px;margin-bottom : 10px;" if index == 0 %>">
-        <div class="link-desc">
-          <%= link_to "#{link.url}", link_path(link), :target => "_blank" %><br />
-          <%= link.description %>
-          
-        </div>
-        <div class="arrow-container">
-          <div class="single-arrow">
-            <div class="arrow-up" id="<%= link.id %>"></div>
-            <div class="arrow-text" id ="up_<%= link.id %>"><%= link.plus_count.present? ? link.plus_count : 0 %></div>
-          </div>
-          <div class="single-arrow">
-            <div class="arrow-text" id="down_<%= link.id %>"><%= link.minus_count.present? ? link.minus_count : 0 %></div>
-            <div class="arrow-down" id="<%= link.id %>"></div>
-          </div>
-          <div class="clear"></div>
-
-
-        </div>
-        <div class="clear"></div>
-      </div>
-
-    <% end %>
-  </div>
-
-  <div class="span12 well" style="height: 300px; margin-left: 0px">
-    <h5>New Link</h5>
-    <legend></legend>
-    <%= form_for @link, :html => { :class => 'form-horizontal' } do |f| %>
-      <%= f.hidden_field :course_id, :value => @course.id %>
-      <div class="control-group">
-        <%= f.label :url, :class => 'control-label' %>
-        <div class="controls">
-          <%= f.text_field :url, :class => 'text_field',:required => true %>
-        </div>
-      </div>
-      <div class="control-group">
-        <%= f.label :description, :class => 'control-label' %>
-        <div class="controls">
-          <%= f.text_area :description, :class => 'text_field', :rows => '2', :required => true %>
-        </div>
-      </div>
-      <div class="form-actions">
-        <%= f.submit nil, :class => 'btn btn-primary' %>
-      </div>
-    <% end %>
-  </div>
-</div>
