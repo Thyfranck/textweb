@@ -4,6 +4,10 @@ class User < ActiveRecord::Base
 
   has_many :links, as: :creator
 
+  POINT = {
+    :link => 1
+  }
+
   has_many :rates
   has_many :rated_links, :class_name => "Link", :foreign_key => "link_id", :through => :rates
 
