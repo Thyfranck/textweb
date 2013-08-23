@@ -71,7 +71,6 @@ h1,h2,h3,h4 {
     font-size: 20px;
     font-weight: 200;
     text-shadow: 0 1px 0 #FFFFFF;
-
 }
 
 .course-name:hover {
@@ -179,4 +178,14 @@ div.link-hover:hover {
 div.underline {
     border-bottom: 1px solid #777777;
     margin-bottom: 10px;
+}
+
+.course-name-header {
+    color: #777777;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    padding-left: 10px;
+}
+
+.error {
+    color: red;
 }

@@ -1,14 +1,18 @@
-<div class="span12 well" style="height:140px;overflow-y: auto;">
+<div class="course-name-header span12"><%= @course.name %></div>
+<div class="row-fluid">
+  <div class="span12 well" style="height:140px;overflow-y: auto;">
+    <div class="nav-header" style="padding:0;">Course Info</div>
     <%= @course.description  %>
   </div>
+</div>
 
-  <div class="span3 well" style="height:600px;margin-left: 0px">
-    <ul class="nav nav-list">
-      <li class="nav-header"><h5>Topics under this course</h5></li>
-      <% @topics.each do |topic| %>
-        <li class="<%= "active" if @topic_id.to_i == topic.id %>">
-          <%= link_to topic.title, course_path(@course, :topic_id => topic.id) %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
+<div class="span3 well" style="min-height:200px;margin-left: 0px">
+  <ul class="nav nav-list">
+    <li class="nav-header"><h5>Topics under this course</h5></li>
+    <% @topics.each do |topic| %>
+      <li class="<%= "active" if @topic_id.to_i == topic.id %>">
+        <%= link_to topic.title, course_topic_path(@course, topic.id) %>
+      </li>
+    <% end %>
+  </ul>
+</div>

@@ -1,8 +1,14 @@
 class LinksController < ApplicationController
+
   def create
-    @link = current_user.links.create(params[:link])
-    redirect_to request.referrer
+    @link = current_user.links.new(params[:link])
+    if @link.save
+      @url = request.referrer
+    else
+      @error = 'yes'
+    end
   end
+    
     
   def rate
     @link = Link.find(params[:id])

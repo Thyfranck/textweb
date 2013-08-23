@@ -14,10 +14,11 @@ class SessionsController < ApplicationController
     else
       if @user = User.authenticate_without_active_check(params[:email],params[:password])
         flash[:alert] = "Please check your Email to activate your account."
+        redirect_to login_path 
       else
         flash[:alert] = "Email or Password was invalid!"
+        render :new
       end
-      redirect_to login_path 
     end
   end
 

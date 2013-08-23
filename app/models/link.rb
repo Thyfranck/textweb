@@ -8,7 +8,7 @@ class Link < ActiveRecord::Base
 
   belongs_to :creator, polymorphic: true
 
-  validates :url, :presence => true, :format => /(^$)|([a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$)/ix 
+  validates :url, :presence => true, :format => { :with => /(^$)|([a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$)/ix }
   validates :description, :presence => true
   after_create :set_approved
 

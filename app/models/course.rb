@@ -3,5 +3,5 @@ class Course < ActiveRecord::Base
 
   belongs_to :school
 
-  has_many :topics
+  has_many :topics, :dependent => :destroy
 end

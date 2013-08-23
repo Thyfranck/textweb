@@ -1,7 +1,7 @@
 <% if @approved_links.any? %>
-  <h5>Approved Links of this Topic</h5>
-  <legend></legend>
-  <div class="span12 well" style="max-height: 280px; overflow-y: auto;overflow-x: hidden;margin-left: 0px">
+<h5>Approved Links of this Topic</h5>
+<legend></legend>
+<div class="span12 well" style="max-height: 280px; overflow-y: auto;overflow-x: hidden;margin-left: 0px">
     <% @approved_links.each_with_index do |link, index| %>
       <%= link_to link_path(link) do %>
         <div class="link-hover single-link underline">
@@ -25,7 +25,7 @@
       <% end %>
     <% end %>
   </div>
-<% end %>
+  <% end %>
 <% if @unapproved_links.any? %>
   <h5>User submitted links of this Course</h5>
   <legend></legend>

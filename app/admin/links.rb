@@ -11,5 +11,14 @@ ActiveAdmin.register Link do
     @link_creator.update_attribute(:point, @link_creator.point + User::POINT[:link])
     redirect_to admin_link_path(@link)
   end
+
+  form do |f|
+      f.inputs "Details" do
+        f.input :topic
+        f.input :url
+        f.input :description
+      end
+      f.actions
+    end
   
 end
