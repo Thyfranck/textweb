@@ -81,6 +81,10 @@ namespace :deploy do
     run "cd #{current_path};RAILS_ENV=#{rails_env} bundle exec rake db:create"
   end
 
+  task :db_drop, :roles => :app do
+    run "cd #{current_path};RAILS_ENV=#{rails_env} bundle exec rake db:drop"
+  end
+
   task :db_seed, :roles => :app do
     run "cd #{current_path};RAILS_ENV=#{rails_env} bundle exec rake db:seed"
   end

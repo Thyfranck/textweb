@@ -18,6 +18,9 @@ ActiveAdmin.register Link do |link|
     column :approved
     column :created_at
     column :updated_at
+    column "Manage" do |link|
+      link_to "Approve", approve_admin_link_path(link)
+    end
     default_actions
   end
   
@@ -41,7 +44,7 @@ ActiveAdmin.register Link do |link|
     else
       @msg = "This link is already approved"
     end
-    redirect_to admin_link_path(@link), :notice => @msg
+    redirect_to admin_links_path, :notice => @msg
   end
   
 end
