@@ -1,6 +1,6 @@
 Textweb::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
-  config.action_mailer.default_url_options = { :host => '54.226.211.169' }
+  config.action_mailer.default_url_options = { :host => 'textweb.iconsbd.com' }
   
   # Code is not reloaded between requests
   config.cache_classes = true

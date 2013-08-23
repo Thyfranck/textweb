@@ -1,5 +1,5 @@
 class Notification < ActionMailer::Base
-  default from: "tanim@iconsbd.com"
+  default from: "\"TextWeb\" <info@textweb.com>"
 
   def activation_needed_email(user)
     @user = user

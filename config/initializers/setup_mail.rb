@@ -2,7 +2,7 @@
 ActionMailer::Base.smtp_settings = {
   :address              => "smtp.gmail.com",
   :port                 => 587,
-  :domain               => "54.226.211.169",
+  :domain               => "textweb.iconsbd.com",
   :user_name            => "contact@mhbweb.com",
   :password             => "qwerty$123",
   :authentication       => "plain",
