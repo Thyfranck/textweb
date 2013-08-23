@@ -7,13 +7,12 @@ Textweb::Application.routes.draw do
   get "signup" => "users#new", :as => "signup"
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
-  get '/links/:id', to: 'links#show', :as => 'link'
-
+  
   match '/rate' => 'links#rate', :as => 'rate'
   
-  resources :sessions
-  resources :courses
-  resources :links
+  resources :sessions, :only => [:new, :create, :destroy]
+  resources :courses, :only => [:show]
+  resources :links, :only => [:create, :show]
 
   resources :users do
     member do

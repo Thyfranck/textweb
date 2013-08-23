@@ -1,5 +1,7 @@
 class CoursesController < ApplicationController
 
+  before_filter :require_login
+  
   def show
     @course = Course.find(params[:id])
     @topics = @course.topics

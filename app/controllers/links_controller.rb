@@ -1,4 +1,6 @@
 class LinksController < ApplicationController
+  before_filter :require_login
+  
   def create
     @link = current_user.links.create(params[:link])
     redirect_to request.referrer

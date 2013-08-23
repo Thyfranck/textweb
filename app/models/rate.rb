@@ -1,5 +1,5 @@
 class Rate < ActiveRecord::Base
-  attr_accessible :link_id, :minus, :plus, :user_id
+  attr_accessible :link_id, :plus, :user_id
 
   belongs_to :link
   after_create :update_link_rating
