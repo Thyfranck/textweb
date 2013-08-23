@@ -4,7 +4,6 @@ class CreateRates < ActiveRecord::Migration
       t.integer :link_id
       t.integer :user_id
       t.boolean :plus
-      t.boolean :minus
       
       t.timestamps
     end

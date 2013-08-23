@@ -49,14 +49,14 @@ ActiveRecord::Schema.define(:version => 20130822110606) do
   create_table "courses", :force => true do |t|
     t.integer  "school_id"
     t.string   "name"
+    t.text     "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.text     "description"
   end
 
   create_table "links", :force => true do |t|
     t.integer  "topic_id"
-    t.text     "url"
+    t.string   "url"
     t.text     "description"
     t.integer  "creator_id"
     t.string   "creator_type"
