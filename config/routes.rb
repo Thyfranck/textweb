@@ -13,9 +13,9 @@ Textweb::Application.routes.draw do
 
   match '/rate' => 'links#rate', :as => 'rate'
   
-  resources :sessions
-  resources :courses
-  resources :links
+  resources :sessions, :only => [:new, :create, :destroy]
+  resources :courses, :only => [:show]
+  resources :links, :only => [:create, :show]
 
   resources :users do
     member do

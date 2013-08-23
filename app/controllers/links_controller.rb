@@ -1,5 +1,6 @@
 class LinksController < ApplicationController
-
+  before_filter :require_login
+  
   def create
     @link = current_user.links.new(params[:link])
     if @link.save
