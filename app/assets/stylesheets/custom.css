@@ -366,3 +366,40 @@ div.underline {
     float: right;
     margin-bottom: 10px;
 }
+
+.item .item-link {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    color: #777777;
+    font-weight: 200;
+    text-shadow: 0 1px 0 #FFFFFF;
+}
+
+.item .item-link:hover {
+    text-decoration: none;
+    background-color: rgba(0,0,128, 0.2);
+}
+
+.item .single-course-name {
+    margin: 10px 5px;
+    padding: 5px;
+    display: block;
+    font-size: 20px;
+/*    border-bottom: 1px solid #cccccc;*/
+}
+
+.item .single-course-title {
+    margin: 10px 5px;
+    padding: 5px;
+    display: block;
+    font-size: 14px;
+    border-top: 1px solid #cccccc;
+}
+
+.item .single-course-image {
+    display: inline-block;
+    width: 90%;
+    padding: 5%;
+    border-top: 1px solid #cccccc;
+}

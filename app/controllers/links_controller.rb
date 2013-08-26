@@ -26,9 +26,9 @@ class LinksController < ApplicationController
 
   def show
     @link = Link.find(params[:id])
-    @course = @link.topic.course
+    @course = @link.section.topic.course
     @topics = @course.topics
-    @topic_id = @link.topic.id
+    @topic_id = @link.section.topic.id
     @youtube_link = @link.youtube?
   end
 
