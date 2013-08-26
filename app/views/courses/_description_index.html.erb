@@ -1,6 +1,11 @@
 <div class="span3 well" style="min-height:200px;margin-left: 0px">
   <ul class="nav nav-list">
-    <li class="nav-header"><h5>Topics under this course</h5></li>
+    <li class="nav-header">
+      <h5>
+        Index of 
+        <%= link_to @course.name, @course %>
+      </h5>
+    </li>
     <% @topics.each do |topic| %>
       <li>
         <%= link_to "javascript:void(0)", :data => {:toggle => "collapse", :target => "#toggle#{topic.id}"}, :class => "toggle-link" do %>

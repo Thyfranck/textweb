@@ -379,7 +379,7 @@ div.underline {
 
 .item .item-link:hover {
     text-decoration: none;
-    background-color: rgba(0,0,128, 0.2);
+    background-color: #DAE2E8;
 }
 
 .item .single-course-name {

@@ -6,24 +6,31 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-      <%= link_to "CourseLinks", root_path, :class => "brand" %>
+      <% if current_user.present? %>
+        <%= link_to "CourseLinks", home_schools_path, :class => "brand" %>
+      <% else %>
+        <%= link_to "CourseLinks", root_path, :class => "brand" %>
+      <% end %>
 
-      <%# if current_school.present?  %>
-        <div class="container-fluid nav-collapse">
-          <ul class="nav">
-            <% if current_user %>
-              <li><%= link_to "Sign Out", logout_path  %></li>
-              <li><%= link_to "Profile", profile_user_path(current_user)  %></li>
-              <li>
-                <%= link_to current_user.email, profile_user_path(current_user) %>
-              </li>
-            <% else %>
-              <li><%= link_to "Log in", login_path  %></li>
-              <li><%= link_to "Sign up", signup_path  %></li>
-            <% end %>
-          </ul>
-        </div><!--/.nav-collapse -->
-      <%# end %>
+      <div class="container-fluid nav-collapse">
+        <ul class="nav">
+          <% if current_user %>
+            <li>
+              <%= link_to current_user.name, profile_user_path(current_user) %>
+            </li>
+            <li>
+              <%= link_to "Logout", logout_path  %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to "Log in", login_path  %>
+            </li>
+            <li>
+              <%= link_to "Sign up", signup_path  %>
+            </li>
+          <% end %>
+        </ul>
+      </div><!--/.nav-collapse -->
     </div>
   </div>
 </div>

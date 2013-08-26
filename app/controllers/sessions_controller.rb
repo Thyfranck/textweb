@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       redirect_back_or_to home_schools_path, :notice => "Logged in!"
     else
       if User.authenticate_without_active_check(params[:email],params[:password])
-        flash[:alert] = "Please check your Email to activate your account."
+        flash[:alert] = "Please check your email to activate your account."
       else
         flash[:alert] = "Email or Password was invalid!"
       end
