@@ -1,17 +1,24 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
-  attr_accessible :email, :password, :password_confirmation, :point
+  
+  attr_accessible :school_id, :first_name, :last_name, :email,
+    :password, :password_confirmation
 
-  has_many :links, as: :creator
+  belongs_to :school
+  has_many :links,    :dependent => :destroy
+  has_many :comments, :dependent => :destroy
+  has_many :votes,    :dependent => :destroy
 
-  POINT = {
-    :link => 1
-  }
+  validates :school_id, :presence => true
+  validates :first_name, :presence => true
+  validates :last_name, :presence => true
+  validates :email, :uniqueness => true, :format =>  { :with => /^[\w\.\+-]{1,}\@([\da-zA-Z-]{1,}\.){1,}[\da-zA-Z-]{2,6}$/ }
+  validates_length_of :password, :minimum => 6, :if => :password
+  validates_confirmation_of :password, :if => :password
 
-  has_many :rates
-  has_many :rated_links, :class_name => "Link", :foreign_key => "link_id", :through => :rates
-
-  validates_confirmation_of :password, :message => "should match confirmation", :if => :password
+  def name
+    "#{first_name} #{last_name}"
+  end
 
   def resend_activation_email!
     send_activation_needed_email!

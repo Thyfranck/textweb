@@ -4,7 +4,7 @@ gem 'rails', '3.2.14'
 gem 'mysql2'
 gem 'thin'
 gem 'sorcery'
-
+gem 'carrierwave'
 gem 'activeadmin'
 
 group :assets do

@@ -1,26 +1,20 @@
 class Link < ActiveRecord::Base
-  attr_accessible :topic_id, :description, :url, :creator_type, :approved, :creator_id, :plus_count, :minus_count
+  attr_accessible :section_id, :user_id, :url, :description, :vote, :status
+  
+  belongs_to :section
+  has_many :comments, :dependent => :destroy
+  has_many :votes,    :dependent => :destroy
 
-  belongs_to :topic
-
-  has_many :rates
-  has_many :rater_users, :class_name => "User", :foreign_key => "user_id", :through => :rates
-
-  belongs_to :creator, polymorphic: true
-
-  validates :url, :presence => true, :format => { :with => /(^$)|([a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$)/ix }
+  validates :section_id,  :presence => true
+  validates :user_id,     :presence => true
+  validates :url,         :presence => true, :format => { :with => /(^$)|([a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$)/ix }
   validates :description, :presence => true
-  after_create :set_unapproved
 
-  def set_unapproved
-    self.approved = false
-    save
-  end
-
-  def user_already_rated(user_id)
-    rates = self.rates
-    return rates.where(:user_id => user_id).present? ? true : false
-  end
+  STATUS = {
+    :approved => "APPROVED",
+    :blocked => "BLOCKED",
+    :deleted => "DELETED"
+  }
 
   def youtube?
     uri = URI.parse(url)

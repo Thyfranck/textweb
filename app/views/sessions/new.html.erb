@@ -1,24 +1,14 @@
-<h3>Log in</h3>
+<div class="well-wrap well">
+  <div class="title">
+    Log in
+  </div>
 
-<%= form_tag sessions_path do %>
-  <div class="field">
-    <%= label_tag :email %>
-    <%= text_field_tag :email, params[:email] %>
+  <div class="panel-content">
+    <%= render "form" %>
   </div>
-  <div class="field">
-    <%= label_tag :password %>
-    <%= password_field_tag :password %>
-  </div>
-  <div class="field">
-    <%= check_box_tag :remember_me, 1, params[:remember_me], :id => "remember_check" %>
-    <%= label_tag :remember_me, nil, :id => "remember_me" %>
-    &nbsp | &nbsp
-    <%= link_to "Forgot password?", new_password_reset_path, :class => "forgot-link" %>
-    <div class="clear"></div>
-  </div>
-  <div class="actions"><%= submit_tag "Log in", :class => "btn btn-primary" %></div>
-<% end %>
 
-  <div>
-    Do not have an account ? <%= link_to "Sign Up", signup_path %>
+  <div class="panel-footer">
+    Don't have an account?
+    <%= link_to "Sign up", signup_path %>
   </div>
+</div>

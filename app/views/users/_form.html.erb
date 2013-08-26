@@ -1,0 +1,43 @@
+<%= form_for @user do |f| %>
+  <% if @user.errors.any? %>
+    <div class="error_messages">
+      <h2>Form is invalid</h2>
+      <ul>
+        <% for message in @user.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="text-input-container">
+    <%= f.text_field :first_name, :placeholder => "First Name", :class => 'text_field', :required => true %>
+  </div>
+
+  <div class="text-input-container">
+    <%= f.text_field :last_name, :placeholder => "Last Name", :class => 'text_field', :required => true %>
+  </div>
+
+  <div class="text-input-container">
+    <%= f.email_field :email, :placeholder => "Email Address (@#{current_school.email_postfix})", :class => 'text_field', :required => true %>
+  </div>
+
+  <div class="text-input-container">
+    <%= f.password_field :password, :placeholder => "Password", :class => 'text_field', :required => true %>
+  </div>
+
+  <div class="text-input-container">
+    <%= f.password_field :password_confirmation, :placeholder => "Password Confirmation", :class => 'text_field', :required => true %>
+  </div>
+
+  <div class="notice">
+    By clicking "Sign up" you confirm that you accept the
+    <%= link_to "Terms of Service", terms_path, :target => "_blank" %>
+    and
+    <%= link_to "Privacy Policy", privacy_path, :target => "_blank" %>
+    .
+  </div>
+
+
+  <%= submit_tag "Sign up", :class => 'btn btn-info login-btn' %>
+<% end %>

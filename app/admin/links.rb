@@ -9,37 +9,25 @@ ActiveAdmin.register Link do |link|
   index do
     selectable_column
     column :id
-    column :topic
+    column :section
+    column :user
     column :url
     column :description do |link|
       link.description.truncate(40) if link.description.present?
     end
-    column :creator_type
-    column :approved
+    column :vote
+    column :status
     column :created_at
-    column :updated_at
     column "Manage" do |link|
       link_to "Approve", approve_admin_link_path(link)
     end
     default_actions
   end
   
-
-  form do |f|
-    f.inputs "Details" do
-      f.input :topic
-      f.input :url
-      f.input :description
-    end
-    f.actions
-  end
-  
   member_action :approve do
     @link = Link.find(params[:id])
     if @link.approved == false
       @link.update_attribute(:approved, true)
-      @link_creator = @link.creator
-      @link_creator.update_attribute(:point, @link_creator.point + User::POINT[:link])
       @msg = "Link approved"
     else
       @msg = "This link is already approved"

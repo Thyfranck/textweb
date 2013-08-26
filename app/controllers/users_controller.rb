@@ -1,12 +1,8 @@
 class UsersController < ApplicationController
 
-  before_filter :require_school_session, :except => [:email_verification]
+  before_filter :require_current_school, :except => [:email_verification]
   before_filter :require_login, :only => [:profile, :change_password]
-  before_filter :require_same_user, :only => [:profile, :change_password]
-  before_filter :redirect_current_user_to_home, :except => [:profile, :change_password]
   
-  layout "home"
-
   def new
     @user = User.new
   end
@@ -64,12 +60,6 @@ class UsersController < ApplicationController
       flash[:alert] = "Sorry there was a problem"
       render :profile, :layout => "profile"
     end
-  end
-
-  private
-
-  def require_same_user
-    redirect_to home_schools_path if current_user and current_user.id != params[:id].to_i
   end
 
 end

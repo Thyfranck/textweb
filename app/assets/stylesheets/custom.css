@@ -1,29 +1,201 @@
-footer {
-    margin-top: 70px;
-}
-
-body {
-    background-color: #d9e9f6;
-}
-
-label#remember_me {
-    width: 100px;
-    display: inline-block;
-    float: left;
-    margin-top: 1px;
-}
-
-input#remember_check {
-    width: 40px;
-    display: inline-block;
-    float: left;
-    margin-right: 9px;
-    margin-bottom: 20px;
-}
-
 .clear {
     clear: both;
 }
+
+#footer {
+    background-color: #F0F0F0;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin-top: 30px;
+}
+
+#footer p{
+    text-align: center;
+    margin: 0px;
+    font-size: 12px;
+    font-style: italic;
+    font-family: verdana;
+}
+
+#banner {
+    background-color: #CACACA;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    margin-top: -19px;
+    margin-bottom: 20px;
+}
+
+#banner p{
+    text-align: center;
+    margin: 0px;
+    font-size: 14px;
+    font-style: italic;
+    font-family: verdana;
+    font-weight: bold;
+    color: #fff;
+}
+
+.home-wrap{
+    padding-top: 50px;
+    padding-bottom: 150px;
+    width: 400px;
+    margin: auto;
+    text-align: center;
+}
+
+
+.well-wrap {
+    width: 350px;
+    margin: auto;
+}
+
+.well-wrap.well{
+    padding: 0px;
+}
+
+.well-wrap .title{
+    border-radius: 4px 4px 0 0;
+    border-top: 0 none;
+    background-color: #E5E5E5;
+    background-image: -moz-linear-gradient(center top , #F6F6F6 0%, #E5E5E5 100%);
+    border-bottom: 1px solid #D0D0D0;
+    box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.2), 0 0 0 #000000;
+    padding: 5px 15px;
+    font-size: 24px;
+    line-height: 1.5;
+    color: #393C3D;
+    font-weight: bold;
+    margin: 3px 0;
+    text-rendering: optimizelegibility;
+}
+
+.well-wrap .panel-content{
+    padding: 15px 15px;
+}
+
+.well-wrap label.small{
+    width: 100px;
+    padding-top: 3px;
+}
+
+.well-wrap .btn:link, .btn:visited {
+    color: #FFFFFF;
+}
+
+.well-wrap .btn {
+    -moz-box-sizing: border-box;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 0 0.2em rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.2), 0 0 0 #000000;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+    vertical-align: middle;
+}
+
+.well-wrap a {
+    text-decoration: none;
+}
+
+
+.well-wrap .signup-or-separator {
+    background: none repeat scroll 0 0 transparent;
+    color: #959595;
+    font-size: 14px;
+    font-weight: bold;
+    height: 34px;
+    margin: 0;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.well-wrap .shift {
+    font-family: shiftbook,sans-serif;
+    font-style: normal;
+    line-height: normal;
+}
+
+.well-wrap .signup-or-separator .text {
+    background-color: #F5F5F5;
+    line-height: 36px;
+    padding: 0 10px;
+}
+
+.well-wrap .signup-or-separator hr {
+    margin: -20px auto 10px;
+    width: 200px;
+}
+
+.well-wrap hr {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-image: none;
+    border-right: 0 none;
+    border-style: solid none;
+    border-width: 1px 0;
+}
+
+
+.panel-footer:before, .panel-footer:after {
+    content: "";
+    display: table;
+}
+.panel-footer:after {
+    clear: both;
+}
+.panel-footer:before, .panel-footer:after {
+    content: "";
+    display: table;
+}
+
+.panel-footer {
+    border-radius: 0 0 6px 6px;
+    border-top: 1px solid #D5D5D5;
+    box-shadow: 0 1px 0 #FFFFFF inset, 0 0 0 #000000;
+    margin-bottom: 0;
+    padding: 14px 15px 15px;
+}
+
+.well-wrap .text-input-container {
+    cursor: text;
+    position: relative;
+}
+
+.well-wrap .text-input-container .text_field{
+    width: 96%;
+}
+
+.well-wrap .span6.right{
+    text-align: right;
+    padding-top: 3px;
+}
+
+.well-wrap .btn.login-btn{
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.well-wrap .notice{
+    color: #393C3D;
+    font-size: 12px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.well-wrap form{
+    margin: 0px;
+}
+
+
+
+
+
+
 
 h1,h2,h3,h4 {
     color: #777777;

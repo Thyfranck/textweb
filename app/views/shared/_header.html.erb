@@ -1,0 +1,39 @@
+<div class="navbar navbar-fluid-top">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <%= link_to "CourseLinks", root_path, :class => "brand" %>
+
+      <%# if current_school.present?  %>
+        <div class="container-fluid nav-collapse">
+          <ul class="nav">
+            <% if current_user %>
+              <li><%= link_to "Sign Out", logout_path  %></li>
+              <li><%= link_to "Profile", profile_user_path(current_user)  %></li>
+              <li>
+                <%= link_to current_user.email, profile_user_path(current_user) %>
+              </li>
+            <% else %>
+              <li><%= link_to "Log in", login_path  %></li>
+              <li><%= link_to "Sign up", signup_path  %></li>
+            <% end %>
+          </ul>
+        </div><!--/.nav-collapse -->
+      <%# end %>
+    </div>
+  </div>
+</div>
+
+<% if current_school.present? %>
+  <div id="banner">
+    <div class="container-fluid">
+      <p class="muted">
+        <%= current_school.name %>
+      </p>
+    </div>
+  </div>
+<% end %>

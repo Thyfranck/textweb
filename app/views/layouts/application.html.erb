@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title><%= content_for?(:title) ? yield(:title) : "Textweb" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "CourseLinks" %></title>
     <%= csrf_meta_tags %>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -20,23 +20,17 @@
     <%= javascript_include_tag "application" %>
   </head>
   <body>
-
-    <%= render 'shared/top_nav' %>
-
+    <%= render 'shared/header' %>
 
     <div class="container-fluid">
       <%= bootstrap_flash %>
       <div class="row-fluid">
-
         <%= yield %>
-        
       </div><!--/row-->
-
-      <footer>
-<%#*<p>&copy; Company 2013</p>%>
-      </footer>
-
     </div> <!-- /container -->
+
+    <%= render "shared/footer" %>
+
     <%= yield :js %>
   </body>
 </html>

@@ -1,5 +1,8 @@
 Textweb::Application.routes.draw do
-  
+
+  match 'terms-of-service' => 'public#terms_of_service', :as => :terms
+  match 'privacy' => 'public#privacy', :as => :privacy
+
   resources :password_resets
 
   root :to => 'public#index'
@@ -34,7 +37,8 @@ Textweb::Application.routes.draw do
       get :courses
     end
   end
-
+  
+  root :to => 'public#index'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

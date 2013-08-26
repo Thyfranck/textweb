@@ -2,10 +2,15 @@ class PublicController < ApplicationController
 
   def index
     @school = School.all
-    render :layout => "home"
+    session.delete(:school)
   end
 
-  def home
+  def terms_of_service
+
+  end
+
+  def privacy
+    
   end
 
 end

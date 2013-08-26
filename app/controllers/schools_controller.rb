@@ -17,7 +17,7 @@ class SchoolsController < ApplicationController
   end
 
   def set_session
-    session[:school] = params["school"]
+    set_current_school(params["school"])
     redirect_to login_path
   end
 

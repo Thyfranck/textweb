@@ -3,11 +3,15 @@ ActiveAdmin.register User do
 
   actions :all, :except => [:new, :edit]
 
+  filter :first_name
+  filter :last_name
   filter :email
   
   index do
     selectable_column
     column :id
+    column :first_name
+    column :last_name
     column :email
     column :activation_state
     column :created_at

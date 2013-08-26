@@ -1,20 +1,27 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  def current_school
+    @current_school ||= School.find(session[:school]) if session[:school].present?
+  end
 
+  hide_action :current_school
+  helper_method :current_school
 
   private
+
+  def set_current_school(school_id)
+    session[:school] = school_id
+  end
 
   def not_authenticated
     redirect_to login_url, :alert => "First log in to view this page."
   end
 
-  def require_school_session
-    redirect_to root_path if session[:school].nil?
-  end
-
-  def redirect_current_user_to_home
-    redirect_to home_schools_path if current_user
+  def require_current_school
+    if current_school.blank?
+      redirect_to root_path , :alert => "Please select your school."
+    end
   end
 
 end
