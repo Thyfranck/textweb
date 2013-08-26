@@ -31,4 +31,15 @@ class User < ActiveRecord::Base
     return user
   end
 
+  def make_email_format
+    self.email = self.email + "@" +self.school.email_postfix
+  end
+
+  def self.authenticate_without_active_check(*credentials)
+    prevent_check = self.sorcery_config.before_authenticate.delete(:prevent_non_active_login)
+    user = self.authenticate(*credentials)
+    self.sorcery_config.before_authenticate << prevent_check if prevent_check
+    return user
+  end
+
 end

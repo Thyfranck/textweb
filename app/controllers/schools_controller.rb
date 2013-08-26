@@ -1,10 +1,10 @@
 class SchoolsController < ApplicationController
 
-  before_filter :require_school_session, :except => [:set_session]
+  before_filter :require_current_school, :except => [:set_session]
   before_filter :require_login, :except => [:set_session]
 
   def home
-    @school = School.find(session[:school])
+    @school = School.find(session[:school]) || current_user.school
     @courses = @school.courses.order("courses.name ASC").limit(School::COURSE_PER_PAGE)
   end
 

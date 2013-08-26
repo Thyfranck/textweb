@@ -5,11 +5,14 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if @user = User.authenticate(params[:email], params[:password], params[:remember_me])
-      set_current_school(@user.school_id)
+    if login(params[:email], params[:password], params[:remember_me])
       redirect_back_or_to home_schools_path, :notice => "Logged in!"
     else
-      flash[:alert] = "Email or Password was invalid!"
+      if User.authenticate_without_active_check(params[:email],params[:password])
+        flash[:alert] = "Please check your Email to activate your account."
+      else
+        flash[:alert] = "Email or Password was invalid!"
+      end
       render :new
     end
   end

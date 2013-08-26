@@ -361,3 +361,8 @@ div.underline {
 .error {
     color: red;
 }
+
+.postfix {
+    float: right;
+    margin-bottom: 10px;
+}

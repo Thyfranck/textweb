@@ -2,7 +2,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   def current_school
-    @current_school ||= School.find(session[:school]) if session[:school].present?
+    if current_user
+      @current_school = current_user.school
+    else
+      @current_school ||= School.find(session[:school]) if session[:school].present?
+    end
   end
 
   hide_action :current_school

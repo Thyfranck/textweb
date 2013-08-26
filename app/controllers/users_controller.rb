@@ -8,10 +8,12 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(params[:user])
+    @user = current_school.users.new(params[:user])
+    @user.make_email_format
     if @user.save
       redirect_to email_confirmation_page_user_path(@user), :notice => "You need to confirm your email address in order to continue"
     else
+      @user.email = @user.email.gsub(/\@\S*/, "")
       render :new
       flash.now.alert = "Sorry there was a problem. Please, try again."
     end
@@ -41,6 +43,7 @@ class UsersController < ApplicationController
   def email_verification
     if (@user = User.load_from_activation_token(params[:id]))
       @user.activate!
+      set_current_school(@user.school_id)
       auto_login(@user)
       redirect_to home_schools_path, :notice => "Your account is now verified."
     else

@@ -19,7 +19,7 @@
   </div>
 
   <div class="text-input-container">
-    <%= f.email_field :email, :placeholder => "Email Address (@#{current_school.email_postfix})", :class => 'text_field', :required => true %>
+<%= f.text_field :email, :placeholder => "Email Address (@#{current_school.email_postfix})", :class => 'text_field', :required => true %><div class="postfix"><%= "@#{current_school.email_postfix}" %></div>
   </div>
 
   <div class="text-input-container">
