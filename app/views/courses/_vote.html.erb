@@ -19,16 +19,18 @@
       </div>
     </div>
   <% end %>
-  <div class="span3">
-    <div class="row-fluid">
-      <div class="span6">
-        <div class="arrow-up" id="<%= link.id %>"></div>
-        <div class="arrow-text" id ="up_<%= link.id %>"><%= link.vote %></div>
-      </div>
-      <div class="span6">
-        <div class="arrow-text" id="down_<%= link.id %>"><%= link.vote %></div>
-        <div class="arrow-down" id="<%= link.id %>"></div>
+  <% unless link.user == current_user %>
+    <div class="span3">
+      <div class="row-fluid">
+        <div class="span6">
+          <div class="arrow-up" id="<%= link.id %>"></div>
+          <div class="arrow-text" id ="up_<%= link.id %>"><%= link.vote %></div>
+        </div>
+        <div class="span6">
+          <div class="arrow-text" id="down_<%= link.id %>"><%= link.vote %></div>
+          <div class="arrow-down" id="<%= link.id %>"></div>
+        </div>
       </div>
     </div>
-  </div>
+  <% end %>
 </div>
