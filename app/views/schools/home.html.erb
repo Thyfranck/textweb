@@ -21,7 +21,9 @@
         columnWidth: 100,
         "gutter": -14,
         itemSelector: '.item'
-      });;
+      });
+
+      $('#container').css('min-height', $(window).height() + 'px');
 
       var courses = "exists";
       var page = 2;

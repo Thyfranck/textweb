@@ -261,7 +261,7 @@ h1,h2,h3,h4 {
     border-left: 15px solid transparent;
     border-right: 15px solid transparent;
 
-    border-bottom: 15px solid green;
+    border-bottom: 15px solid #818185;
     cursor: pointer;
 }
 
@@ -271,7 +271,7 @@ h1,h2,h3,h4 {
     border-left: 15px solid transparent;
     border-right: 15px solid transparent;
 
-    border-top: 15px solid red;
+    border-top: 15px solid #818185;
     cursor: pointer;
 }
 

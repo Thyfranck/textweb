@@ -1,4 +1,21 @@
 $(document).ready(function(){
+
+    $(".toggle-link").click(function(){
+        var icon_class = "";
+        if($(this).has('i')){
+            icon_class = $(this).children('i').attr('class');
+        }
+        if(icon_class=="icon-plus"){
+            $(this).children('i').removeClass("icon-plus");
+            $(this).children('i').addClass("icon-minus");
+        }
+        if(icon_class=="icon-minus"){
+            $(this).children('i').removeClass("icon-minus");
+            $(this).children('i').addClass("icon-plus");
+        }
+    });
+
+
     $('#school_select').change(function(){
         $(this).closest("form").submit();
     });

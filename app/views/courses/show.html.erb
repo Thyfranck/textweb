@@ -3,7 +3,20 @@
 
   <div class="span9 well" style="height:1100px">
     <% unless @topic %>
-      <div class="nav-header" style="font-size: 20px;text-align: center;">No topic is added for this course.</div>
+
+      <div class="row-fluid">
+      <div class="span12">
+          <div class="nav-header" style="font-size: 20px;text-align: center;margin-bottom: 30px;">Welcome to <%= @course.name %></div>
+      </div>
+      <div class="row-fluid">
+        <div class="span4">
+          <%= image_tag @course.image_url if @course.image.present? %>
+        </div>
+        <div class="span8" style="color: #777777;">
+          <%= @course.description if @course.description.present? %>
+        </div>
+      </div>
+    </div>
     <% else %>
       <% if @approved_links.present? or @unapproved_links.present? %>
         <div class="dynamic">

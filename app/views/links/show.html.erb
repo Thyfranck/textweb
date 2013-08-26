@@ -3,23 +3,31 @@
 
 
   <div class="span9 well">
-    <div class="row-fluid single-res">
-      <div class="span2 offset1 attr-name">
-        Description
+
+    <div class="row-fluid">
+      <div class="span11">
+        <div class="row-fluid single-res">
+          <div class="span2 offset1 attr-name">
+            Description
+          </div>
+          <div class="span9 attr-val">
+            <%= @link.description %>
+          </div>
+        </div>
+
+        <div class="row-fluid single-res">
+          <div class="span2 offset1 attr-name">
+            Link URL
+          </div>
+          <div class="span9 attr-val">
+            <%= link_to @link.host, @link.iframe_url, :target => "_blank" %>
+          </div>
+        </div>
       </div>
-      <div class="span9 attr-val">
-        <%= @link.description %>
-      </div>
+      <%= render "courses/vote_arrow", :link => @link %>
     </div>
 
-    <div class="row-fluid single-res">
-      <div class="span2 offset1 attr-name">
-        Link URL
-      </div>
-      <div class="span9 attr-val">
-        <%= link_to @link.host, @link.iframe_url, :target => "_blank" %>
-      </div>
-    </div>
+
 
     <div class="row-fluid frame-wrapper">
       <div class="span11 offset1">

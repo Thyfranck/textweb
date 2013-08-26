@@ -34,6 +34,7 @@ class LinksController < ApplicationController
   def show
     @link = Link.find(params[:link_id])
     @section = @link.section
+    @section_id = @section.id
     @topic = @section.topic
     @course = @topic.course
     @topics = @course.topics
