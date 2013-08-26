@@ -18,12 +18,16 @@ class Link < ActiveRecord::Base
   }
 
   def youtube?
-    uri = URI.parse(url)
+    uri = URI.parse(iframe_url)
     uri.host =~ /youtube\.com/
   end
 
   def iframe_url
-    return url =~ /^http:\/\// ? url : "http://" + url
+    return url =~ /^(http|https):\/\// ? url : "http://" + url
+  end
+
+  def host
+    URI.parse(iframe_url).host
   end
 
   def user_already_rated(user_id)

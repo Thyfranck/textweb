@@ -1,5 +1,4 @@
 <div class="span12">
-  <h3><%= @school.name %></h3>
   <div id="container">
     <% @courses.each do |course| %>
       <%= render "courses/single_course", course: course %>
