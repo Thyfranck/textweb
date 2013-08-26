@@ -23,15 +23,11 @@ ActiveAdmin.register Link do |link|
     end
     default_actions
   end
-  
+
   member_action :approve do
     @link = Link.find(params[:id])
-    if @link.approved == false
-      @link.update_attribute(:approved, true)
-      @msg = "Link approved"
-    else
-      @msg = "This link is already approved"
-    end
+    @link.update_attribute(:status, Link::STATUS[:approved])
+    @msg = "Link approved"
     redirect_to admin_links_path, :notice => @msg
   end
   

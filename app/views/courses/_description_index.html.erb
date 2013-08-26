@@ -11,7 +11,14 @@
     <li class="nav-header"><h5>Topics under this course</h5></li>
     <% @topics.each do |topic| %>
       <li class="<%= "active" if @topic_id.to_i == topic.id %>">
-        <%= link_to topic.title, course_topic_path(@course, topic.id) %>
+        <%= link_to topic.name, '#' %>
+        <ul class="nav nav-list">
+          <% topic.sections.each do |section| %>
+            <li class="<%= "active" if @section_id.to_i == section.id %>">
+              <%= link_to section.name, course_topic_section_path(@course, topic.id, section.id) %>
+            </li>
+          <% end %>
+        </ul>
       </li>
     <% end %>
   </ul>

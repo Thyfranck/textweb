@@ -2,6 +2,7 @@ class Link < ActiveRecord::Base
   attr_accessible :section_id, :user_id, :url, :description, :vote, :status
   
   belongs_to :section
+  belongs_to :user
   has_many :comments, :dependent => :destroy
   has_many :votes,    :dependent => :destroy
 
@@ -23,6 +24,12 @@ class Link < ActiveRecord::Base
 
   def iframe_url
     return url =~ /^http:\/\// ? url : "http://" + url
+  end
+
+  def user_already_rated(user_id)
+    user = User.find(user_id)
+    @votes = user.votes.where("link_id = ?", self.id)
+    return @votes.present? ? @votes.first.id : nil
   end
 
 end

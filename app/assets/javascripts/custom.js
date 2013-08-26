@@ -7,7 +7,7 @@ $(document).ready(function(){
         var link_id = $(this).attr('id')
         $.ajax({
             type: 'POST',
-            url: '/rate',
+            url: '/vote',
             data: {
                 rate : 'up',
                 id : link_id
@@ -20,7 +20,7 @@ $(document).ready(function(){
         var link_id = $(this).attr('id')
         $.ajax({
             type: 'POST',
-            url: '/rate',
+            url: '/vote',
             data: {
                 rate : 'down',
                 id : link_id

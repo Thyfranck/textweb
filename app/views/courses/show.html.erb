@@ -5,7 +5,7 @@
     <% unless @topic %>
       <div class="nav-header" style="font-size: 20px;text-align: center;">No topic is added for this course.</div>
     <% else %>
-      <% if @approved_links.any? or @unapproved_links.any? %>
+      <% if @approved_links.present? or @unapproved_links.present? %>
         <div class="dynamic">
           <%= render 'courses/links' %>
         </div>
@@ -18,8 +18,8 @@
         <h5>New Link</h5>
         <legend></legend>
         <div class="error"></div>
-        <%= form_for @link,:remote => true,:html => { :class => 'form-horizontal' } do |f| %>
-          <%= f.hidden_field :topic_id, :value => @topic.id %>
+        <%= form_for @new_link,:remote => true,:html => { :class => 'form-horizontal' } do |f| %>
+          <%= f.hidden_field :section_id, :value => @section.id %>
           <div class="control-group">
             <%= f.label :url, :class => 'control-label' %>
             <div class="controls">

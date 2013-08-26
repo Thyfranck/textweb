@@ -11,13 +11,20 @@ class LinksController < ApplicationController
   end
     
     
-  def rate
+  def vote
     @link = Link.find(params[:id])
-    @rate_type = params[:rate]
+    @vote_type = params[:rate]
     respond_to do |format|
-      if @link.user_already_rated(current_user.id)
+      @vote_id = @link.user_already_rated(current_user.id)
+      if @vote_id.present?
+        @vote = Vote.find(@vote_id)
+        if @vote.up == @vote.down
+          @vote.update_attributes(@vote_type == "up" ? {:up => true, :down => false} : {:down => true, :up => false})
+        else
+          @vote.update_attributes(@vote_type == "up" ? {:up => true} : {:down => true})
+        end     
       else
-        @new_rate = @link.rates.create(:link_id => @link.id, :plus => @rate_type == "up" ? true : false, :user_id => current_user.id)
+        @new_vote = @link.votes.create(@vote_type == "up" ? {:up => true, :user_id => current_user.id} : {:down => true, :user_id => current_user.id})
       end
       @new_link_status = Link.find(params[:id])
       format.js
@@ -25,10 +32,12 @@ class LinksController < ApplicationController
   end
 
   def show
-    @link = Link.find(params[:id])
-    @course = @link.topic.course
+    @link = Link.find(params[:link_id])
+    @section = @link.section
+    @topic = @section.topic
+    @course = @topic.course
     @topics = @course.topics
-    @topic_id = @link.topic.id
+    @topic_id = @topic.id
     @youtube_link = @link.youtube?
   end
 

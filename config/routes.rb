@@ -11,23 +11,20 @@ Textweb::Application.routes.draw do
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
 
-  get '/links/:id', to: 'links#show', :as => 'link'
+#  get '/links/:id', to: 'links#show', :as => 'link'
 
-  match '/rate' => 'links#rate', :as => 'rate'
+  match '/vote' => 'links#vote', :as => 'vote'
+
+  get '/courses/:course_id', to: 'courses#show', :as => 'course'
+  get '/courses/:course_id/topics/:topic_id', to: 'courses#show', :as => 'course_topic'
+  get '/courses/:course_id/topics/:topic_id/sections/:section_id', to: 'courses#show', :as => 'course_topic_section'
+  get '/courses/:course_id/topics/:topic_id/sections/:section_id/links/:link_id', to: 'links#show', :as => 'course_topic_section_link'
+
+
   
   resources :sessions, :only => [:new, :create, :destroy]
-  resources :courses, :only => [:show] do
-    resources :topics, :only => [:show] do
-      resources :courses, :only => [:show]
-      resources :sections, :only => [:show] do
-        resources :courses, :only => [:show]
-        resources :links, :only => [:show] do
-          resources :courses, :only => [:show]
-        end
-      end
-    end
-  end
-  resources :links, :only => [:create, :show]
+  
+  resources :links, :only => [:create]
 
   resources :users do
     member do

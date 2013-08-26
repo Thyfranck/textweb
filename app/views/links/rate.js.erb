@@ -1,5 +1,0 @@
-<% if @new_rate %>
-  $('#<%= @rate_type %>_<%= @link.id %>').html("<%= @rate_type == "up" ? @new_link_status.plus_count : @new_link_status.minus_count %>")
-<% else %>
-  alert('You already rated this Link before.')
-<% end %>

@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if login(params[:email], params[:password], params[:remember_me])
+    if @user = login(params[:email], params[:password], params[:remember_me])
       redirect_back_or_to home_schools_path, :notice => "Logged in!"
     else
       if User.authenticate_without_active_check(params[:email],params[:password])
