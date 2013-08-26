@@ -191,9 +191,14 @@
     margin: 0px;
 }
 
+.well-wrap .text-input-container .text_field.small{
+    width: 180px;
+}
 
-
-
+.well-wrap .text-input-container .postfix {
+    float: right;
+    padding-top: 3px;
+}
 
 
 
@@ -362,10 +367,6 @@ div.underline {
     color: red;
 }
 
-.postfix {
-    float: right;
-    margin-bottom: 10px;
-}
 
 .item .item-link {
     display: inline-block;
