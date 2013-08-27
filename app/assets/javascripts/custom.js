@@ -5,13 +5,13 @@ $(document).ready(function(){
         if($(this).has('i')){
             icon_class = $(this).children('i').attr('class');
         }
-        if(icon_class=="icon-plus"){
-            $(this).children('i').removeClass("icon-plus");
-            $(this).children('i').addClass("icon-minus");
+        if(icon_class=="icon-plus-sign"){
+            $(this).children('i').removeClass("icon-plus-sign");
+            $(this).children('i').addClass("icon-minus-sign");
         }
-        if(icon_class=="icon-minus"){
-            $(this).children('i').removeClass("icon-minus");
-            $(this).children('i').addClass("icon-plus");
+        if(icon_class=="icon-minus-sign"){
+            $(this).children('i').removeClass("icon-minus-sign");
+            $(this).children('i').addClass("icon-plus-sign");
         }
     });
 

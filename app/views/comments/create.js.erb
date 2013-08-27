@@ -1,0 +1,6 @@
+<% if @url.present? %>
+  window.location.replace("<%= @url %>");
+<% else %>
+  $('.error').html('');
+  $('.error').html('Sorry, comment could not be posted. Please, try again later.');
+<% end %>

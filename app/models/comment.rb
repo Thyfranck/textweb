@@ -8,6 +8,8 @@ class Comment < ActiveRecord::Base
   validates :user_id,   :presence => true
   validates :content,   :presence => true
 
+  scope :approved, -> { where(status: STATUS[:approved]) }
+
   STATUS = {
     :approved => "APPROVED",
     :blocked => "BLOCKED",

@@ -305,10 +305,12 @@ h1,h2,h3,h4 {
 }
 
 .link-view {
-    width: 80%;
-    height: 450px;
     border: none;
-    margin: 15px 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 80%;
 }
 
 .frame-wrapper {
@@ -433,4 +435,8 @@ a.list-group-item {
     background-color: #428BCA;
     border-color: #428BCA;
     color: #FFFFFF;
+}
+
+.success-notice {
+    color: green;
 }

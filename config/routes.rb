@@ -10,6 +10,7 @@ Textweb::Application.routes.draw do
   get "signup" => "users#new", :as => "signup"
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
+#  post '/comments' => "comments#create", :as => "comments"
 
 #  get '/links/:id', to: 'links#show', :as => 'link'
 
@@ -23,6 +24,8 @@ Textweb::Application.routes.draw do
 
   
   resources :sessions, :only => [:new, :create, :destroy]
+
+  resources :comments, :only => [:create]
   
   resources :links, :only => [:create]
 
