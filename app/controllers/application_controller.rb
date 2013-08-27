@@ -1,6 +1,15 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  around_filter :catch_not_found if Rails.env != "development"
+
+
+  def catch_not_found
+    yield
+  rescue ActiveRecord::RecordNotFound
+    redirect_to root_url, :flash => { :error => "Record not found." }
+  end
+
   def current_school
     if current_user
       @current_school = current_user.school

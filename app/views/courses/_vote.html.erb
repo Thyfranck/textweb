@@ -1,23 +1,9 @@
-<div class="row-fluid single-link" style="border-bottom: 1px solid #777777;margin-bottom: 15px;">
-  <%= link_to course_topic_section_link_path(@course.id, @topic.id, @section.id, link.id) do %>
-    <div class="span10 link-hover">
-      <div class="row-fluid single-res">
-        <div class="span2 offset1 attr-name">
-          URL:
-        </div>
-        <div class="span9 attr-val">
-          <%= link.url %>
-        </div>
-      </div>
-      <div class="row-fluid single-res">
-        <div class="span2 offset1 attr-name">
-          Description:
-        </div>
-        <div class="span9 attr-val">
-          <%= link.description %>
-        </div>
-      </div>
-    </div>
-  <% end %>
-  <%= render "courses/vote_arrow", :link => link %>
-</div>
+<%= link_to course_topic_section_link_path(@course.id, @topic.id, @section.id, link.id), :class => "list-group-item link_section span11" do %>
+  <h4 class="list-group-item-heading"><%= link.url %></h4>
+  <p class="list-group-item-text"><%= link.description.truncate(200) %></p>
+<% end %>
+<%= render "courses/vote_arrow", :link => link %>
+
+
+
+

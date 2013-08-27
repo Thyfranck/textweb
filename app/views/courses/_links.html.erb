@@ -3,7 +3,9 @@
   <legend></legend>
   <div class="span12 well" style="max-height: 280px; overflow-y: auto;overflow-x: hidden;margin-left: 0px">
     <% @approved_links.each_with_index do |link, index| %>
-      <%= render 'vote', :link => link, :index => index %>
+      <div class="list-group">
+        <%= render 'vote', :link => link, :index => index %>
+      </div>
     <% end %>
   </div>
 <% end %>
@@ -12,9 +14,9 @@
   <legend></legend>
   <div class="span12 well" style="max-height: 280px; margin-left: 0px;overflow-y: auto;overflow-x: hidden;">
     <% @unapproved_links.each_with_index do |link, index| %>
-
-
-      <%= render 'vote', :link => link, :index => index %>
+      <div class="list-group">
+        <%= render 'vote', :link => link, :index => index %>
+      </div>
     <% end %>
   </div>
 <% end %>

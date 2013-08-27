@@ -17,6 +17,12 @@ class Link < ActiveRecord::Base
     :deleted => "DELETED"
   }
 
+  before_create :set_vote
+
+  def set_vote
+    self.vote = 0
+  end
+
   def youtube?
     uri = URI.parse(iframe_url)
     uri.host =~ /youtube\.com/

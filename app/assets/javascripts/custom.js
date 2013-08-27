@@ -45,4 +45,12 @@ $(document).ready(function(){
             dataType: "script"
         });
     })
+
+    $('.link_section').mouseover(function(){
+        $(this).addClass('active');
+    })
+
+    $('.link_section').mouseout(function(){
+        $(this).removeClass('active');
+    })
 });

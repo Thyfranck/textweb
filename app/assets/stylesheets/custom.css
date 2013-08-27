@@ -387,7 +387,7 @@ div.underline {
     padding: 5px;
     display: block;
     font-size: 20px;
-/*    border-bottom: 1px solid #cccccc;*/
+    /*    border-bottom: 1px solid #cccccc;*/
 }
 
 .item .single-course-title {
@@ -403,4 +403,34 @@ div.underline {
     width: 90%;
     padding: 5%;
     border-top: 1px solid #cccccc;
+}
+
+.list-group-item {
+    background-color: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    display: block;
+    margin-bottom: -1px;
+    padding: 10px 15px;
+    position: relative;
+}
+
+a.list-group-item {
+    text-decoration: none;
+}
+
+.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
+    background-color: #428BCA;
+    border-color: #428BCA;
+    color: #FFFFFF;
+    z-index: 2;
+}
+
+.list-group-item.active .list-group-item-heading, .list-group-item.active:hover .list-group-item-heading, .list-group-item.active:focus .list-group-item-heading {
+    color: inherit;
+}
+
+.panel-primary > .panel-heading {
+    background-color: #428BCA;
+    border-color: #428BCA;
+    color: #FFFFFF;
 }
