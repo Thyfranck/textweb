@@ -29,8 +29,8 @@
 
 
 
-    <div class="row-fluid frame-wrapper">
-      <div class="span11 offset1">
+    <div class="row-fluid">
+      <div class="span11 offset1 frame-wrapper" style="min-height: 450px;">
         <% if @youtube_link.present? %>
           <div id="ytplayer"></div>
         <% else %>
@@ -40,6 +40,42 @@
         <% end %>
       </div>
     </div>
+
+    <div class="row-fluid comment-wrapper">
+      <div class="span11 offset1 well">
+        <div class="page-header">
+          <h1><small>Comments</small></h1>
+        </div>
+
+        <% @link.comments.each do |comment| %>
+          <div class="row-fluid single-comment" style="border-bottom: 1px solid #cccccc;margin-bottom: 20px;">
+            <div class="row-fluid">
+              <div class="span2" style="color: #87a6d5;">
+                <strong><%= comment.user.name %></strong>
+              </div>
+              <div class="span10">
+                <%= comment.content %>
+              </div>
+            </div>
+            <div class="row-fluid">
+              <div class="span10 offset2" style="color: #777777;">
+                <%="#{time_ago_in_words(comment.created_at)} ago "%>
+              </div>
+            </div>
+          </div>
+        <% end %>
+
+        <div class="row-fluid">
+          <div class="span12">
+            <%= render "comments/form", :comment => @link.comments.new %>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+
   </div>
 
 </div>

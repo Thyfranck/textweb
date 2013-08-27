@@ -9,7 +9,12 @@
     <% @topics.each do |topic| %>
       <li>
         <%= link_to "javascript:void(0)", :data => {:toggle => "collapse", :target => "#toggle#{topic.id}"}, :class => "toggle-link" do %>
-          <i class="<%= @topic_id.to_i == topic.id ? 'icon-minus' : 'icon-plus' %>"></i> <%= topic.name %>
+          <% if topic.sections.count > 0 %>
+            <i class="<%= @topic_id.to_i == topic.id ? 'icon-minus-sign' : 'icon-plus-sign' %>"></i>
+          <% else %>
+            <i class="icon-circle-arrow-right"></i>
+          <% end %>
+          <%= topic.name %>
         <% end %>
         <ul class="nav nav-list collapse <%= "in" if @topic_id.to_i == topic.id %>  " id="toggle<%= topic.id %>" style="margin-left: 10px;">
           <% topic.sections.each do |section| %>
