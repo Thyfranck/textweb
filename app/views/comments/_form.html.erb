@@ -4,6 +4,7 @@
   <div class="success-notice"></div>
   <%= f.hidden_field :link_id %>
   <%= f.text_area :content, :style => "width: 90%; height: 60px;" %><br />
-  <%= f.submit "Post", :class => "btn btn-primary" %>
+  <%= f.submit "Post", :class => "btn btn-primary ajax-submit-loader" %>
+  <%= image_tag "spinner.gif", :class => "hidden", :id => "spinner" %>
 <% end %>
   

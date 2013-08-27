@@ -46,7 +46,8 @@
             </div>
           </div>
           <div class="form-actions">
-            <%= f.submit nil, :class => 'btn btn-primary' %>
+            <%= f.submit nil, :class => 'btn btn-primary ajax-submit-loader' %>
+            <%= image_tag "spinner.gif", :class => "hidden", :id => "spinner" %>
           </div>
         <% end %>
       </div>

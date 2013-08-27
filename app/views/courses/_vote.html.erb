@@ -1,6 +1,22 @@
-<%= link_to course_topic_section_link_path(@course.id, @topic.id, @section.id, link.id), :class => "list-group-item link_section span11" do %>
-  <h4 class="list-group-item-heading"><%= link.url %></h4>
-  <p class="list-group-item-text"><%= link.description.truncate(200) %></p>
+<%= link_to course_topic_section_link_path(@course.id, @topic.id, @section.id, link.id),
+  :class => "#{index.odd? ? 'ash'  : 'white'} list-group-item link_section span11"  do %>
+  <div class="row-fluid">
+    <div class="span12 single-course-description">
+      <%= link.description.truncate(125) %>
+    </div>
+  </div>
+  <div class="row-fluid link-small-info">
+    <div class="span4">
+      added by: <%= link.user.name %>
+    </div>
+    <div class="span4">
+      <%="#{time_ago_in_words(link.created_at)} ago "%>
+    </div>
+    <div class="span4">
+      host: <%= link.host %>
+    </div>
+  </div>
+  
 <% end %>
 <%= render "courses/vote_arrow", :link => link %>
 

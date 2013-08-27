@@ -15,6 +15,10 @@ $(document).ready(function(){
         }
     });
 
+    $('.ajax-submit-loader').click(function(){
+        $('#spinner').removeClass('hidden');
+    });
+
 
     $('#school_select').change(function(){
         $(this).closest("form").submit();
@@ -46,11 +50,11 @@ $(document).ready(function(){
         });
     })
 
-    $('.link_section').mouseover(function(){
-        $(this).addClass('active');
-    })
-
-    $('.link_section').mouseout(function(){
-        $(this).removeClass('active');
-    })
+//    $('.link_section').mouseover(function(){
+//        $(this).addClass('active');
+//    })
+//
+//    $('.link_section').mouseout(function(){
+//        $(this).removeClass('active');
+//    })
 });
