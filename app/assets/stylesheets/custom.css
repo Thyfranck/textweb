@@ -35,6 +35,11 @@
     color: #fff;
 }
 
+#banner a.school-home{
+   color: white;
+   text-decoration: none;
+}
+
 .home-wrap{
     padding-top: 50px;
     padding-bottom: 150px;
@@ -200,7 +205,14 @@
     padding-top: 3px;
 }
 
+.well-wrap .field_with_errors input.text_field{
+    border-color: red;
+}
 
+.well-wrap .field_with_errors! > input.small{
+    width: 195px;
+    float: left;
+}
 
 h1,h2,h3,h4 {
     color: #777777;
@@ -260,14 +272,33 @@ h1,h2,h3,h4 {
     margin: 10px;
 }
 
+.links-container{
+    max-height: 600px;
+    margin-left: 0px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.vote-container{
+    padding-top: 12px;
+}
+
 .arrow-up {
     width: 0;
     height: 0;
     border-left: 15px solid transparent;
     border-right: 15px solid transparent;
-
     border-bottom: 15px solid #818185;
     cursor: pointer;
+}
+
+.arrow-up.active{
+    border-bottom: 15px solid green;
+    cursor: default;
+}
+
+.arrow-up.deactive{
+    cursor: default;
 }
 
 .arrow-down {
@@ -275,9 +306,17 @@ h1,h2,h3,h4 {
     height: 0;
     border-left: 15px solid transparent;
     border-right: 15px solid transparent;
-
     border-top: 15px solid #818185;
     cursor: pointer;
+}
+
+.arrow-down.active{
+    border-top: 15px solid red;
+    cursor: default;
+}
+
+.arrow-down.deactive{
+    cursor: default;
 }
 
 .link-desc {
@@ -485,3 +524,4 @@ a.list-group-item {
 .hidden {
     display: none;
 }
+

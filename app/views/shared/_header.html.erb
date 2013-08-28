@@ -16,7 +16,7 @@
         <ul class="nav">
           <% if current_user %>
             <li>
-              <%= link_to current_user.name, profile_user_path(current_user) %>
+              <%= link_to current_user.name, current_user %>
             </li>
             <li>
               <%= link_to "Logout", logout_path  %>
@@ -39,7 +39,7 @@
   <div id="banner">
     <div class="container-fluid">
       <p class="muted">
-        <%= current_school.name %>
+        <%= link_to current_school.name, home_schools_path, :class => "school-home" %>
       </p>
     </div>
   </div>

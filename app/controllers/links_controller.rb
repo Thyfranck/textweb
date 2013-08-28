@@ -3,30 +3,37 @@ class LinksController < ApplicationController
   
   def create
     @link = current_user.links.new(params[:link])
-    if @link.save
-      @url = request.referrer
-    else
-      @error = 'yes'
+    unless @link.save
+      flash[:alert] = "Please enter a valid url!"
     end
+    redirect_to request.referrer
   end
     
     
   def vote
     @link = Link.find(params[:id])
     @vote_type = params[:rate]
-    respond_to do |format|
+
+    unless @link.user.id == current_user.id
+    
       @vote_id = @link.user_already_rated(current_user.id)
+    
       if @vote_id.present?
         @vote = Vote.find(@vote_id)
         if @vote.up == @vote.down
           @vote.update_attributes(@vote_type == "up" ? {:up => true, :down => false} : {:down => true, :up => false})
         else
           @vote.update_attributes(@vote_type == "up" ? {:up => true} : {:down => true})
-        end     
+        end
       else
         @new_vote = @link.votes.create(@vote_type == "up" ? {:up => true, :user_id => current_user.id} : {:down => true, :user_id => current_user.id})
       end
-      @new_link_status = Link.find(params[:id])
+   
+      @link = Link.find(params[:id])
+      
+    end
+      
+    respond_to do |format|
       format.js
     end
   end

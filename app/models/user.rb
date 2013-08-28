@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
   end
 
   def make_email_format
-    self.email = self.email + "@" +self.school.email_postfix
+    self.email = self.email + "@" + self.school.email_postfix
   end
 
   def self.authenticate_without_active_check(*credentials)
@@ -40,6 +40,10 @@ class User < ActiveRecord::Base
     user = self.authenticate(*credentials)
     self.sorcery_config.before_authenticate << prevent_check if prevent_check
     return user
+  end
+
+  def active?
+    self.activation_state == "active"
   end
 
 end

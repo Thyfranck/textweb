@@ -2,23 +2,25 @@
   :class => "#{index.odd? ? 'ash'  : 'white'} list-group-item link_section span11"  do %>
   <div class="row-fluid">
     <div class="span12 single-course-description">
-      <%= link.description.truncate(125) %>
+      <%= link.description.truncate(115) %>
     </div>
   </div>
   <div class="row-fluid link-small-info">
     <div class="span4">
-      added by: <%= link.user.name %>
+      Submitted by: <%= link.user.name %>
     </div>
     <div class="span4">
       <%="#{time_ago_in_words(link.created_at)} ago "%>
     </div>
     <div class="span4">
-      host: <%= link.host %>
+      Reference: <%= link.host %>
     </div>
   </div>
-  
 <% end %>
-<%= render "courses/vote_arrow", :link => link %>
+
+<div class="span1 vote-container" id="vote_container_<%= link.id %>">
+  <%= render "links/vote", :link => link %>
+</div>
 
 
 

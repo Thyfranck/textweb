@@ -32,9 +32,11 @@
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
               <li class="nav-header">Sidebar</li>
-              <li>
-                <%= link_to "Change Password", profile_user_path(current_user) if current_user  %>
-                <%= link_to "Change Password", new_password_reset_path unless current_user  %>
+              <li class="<%= "active" if current_page?(current_user) %>">
+                <%= link_to "Profile", current_user %>
+              </li>
+              <li class="<%= "active" if current_page?(settings_user_path(current_user)) %>">
+                <%= link_to "Change Password", settings_user_path(current_user) %>
               </li>
             </ul>
           </div><!--/.well -->
@@ -44,12 +46,9 @@
         </div>
 
       </div><!--/row-->
-
-      <footer>
-<%#*<p>&copy; Company 2013</p>%>
-      </footer>
-
     </div> <!-- /container -->
+
+    <%= render "shared/footer" %>
     <%= yield :js %>
   </body>
 </html>

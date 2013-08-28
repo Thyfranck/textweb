@@ -1,2 +1,1 @@
-$('#vote_<%= @link.id %>').html("");
-$('#vote_<%= @link.id %>').html("<%= @new_link_status.vote %>")
+$('#vote_container_<%= @link.id %>').html("<%= escape_javascript(render("links/vote", :link => @link)).html_safe %>");

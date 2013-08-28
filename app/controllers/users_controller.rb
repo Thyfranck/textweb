@@ -1,16 +1,27 @@
 class UsersController < ApplicationController
 
-  before_filter :require_current_school, :except => [:email_verification]
-  before_filter :require_login, :only => [:profile, :change_password]
+  before_filter :require_current_school, :except => [:email_verification, :email_confirmation_page]
+  before_filter :require_login, :only => [:show, :settings, :change_password]
   
   def new
     @user = User.new
+  end
+
+  def show
+    @user = User.find(current_user.id)
+    render :layout => "profile"
+  end
+
+  def settings
+    @user = User.find(current_user.id)
+    render :layout => "profile"
   end
 
   def create
     @user = current_school.users.new(params[:user])
     @user.make_email_format
     if @user.save
+      session[:email_confirmation] = @user.id
       redirect_to email_confirmation_page_user_path(@user), :notice => "You need to confirm your email address in order to continue"
     else
       @user.email = @user.email.gsub(/\@\S*/, "")
@@ -20,23 +31,30 @@ class UsersController < ApplicationController
   end
 
   def email_confirmation_page
-    @user = User.find(params[:id])
+    if session[:email_confirmation].present? and session[:email_confirmation].to_i == params[:id].to_i
+      @user = User.find(session[:email_confirmation])
+      if @user.active?
+        redirect_to root_path
+      elsif current_school.blank?
+        set_current_school(@user.school_id)
+      end
+    else
+      redirect_to root_path
+    end
   end
 
   def resend_activation_email
     @user = User.find(params[:id])
-    notice = ""
+    
     if params[:email].present?
-      if @user.update_attributes(:email => params[:email])
-        notice = "updated email address to "+ params[:email]
-      else
-        notice = "could not update email address"
-      end
+      @user.email = params[:email]
+      @user.make_email_format
     end
-    if @user.resend_activation_email!
-      redirect_to email_confirmation_page_user_path(@user), :notice => "Email sent successfully to #{@user.email}. "+ notice
+    
+    if @user.save and @user.resend_activation_email!
+      redirect_to email_confirmation_page_user_path(@user), :notice => "Confirmation email sent to #{@user.email}"
     else
-      redirect_to email_confirmation_page_user_path(@user), :notice => "Sorry there was a problem. Plz, try again later. "+ notice
+      redirect_to email_confirmation_page_user_path(@user), :alert => "Invalid Email Address!"
     end
   end
 
@@ -51,17 +69,13 @@ class UsersController < ApplicationController
     end
   end
 
-  def profile
-    render :layout => "profile"
-  end
-
   def change_password
-    if current_user.update_attributes(:password => params["password"], :password_confirmation => params["password_confirmation"])
-      flash[:notice] = "Password changed successfully"
-      redirect_to profile_user_path(current_user)
+    @user = User.find(current_user.id)
+    
+    if @user.update_attributes(:password => params["password"], :password_confirmation => params["password_confirmation"])
+      redirect_to @user, :notice => "Password was successfully updated!"
     else
-      flash[:alert] = "Sorry there was a problem"
-      render :profile, :layout => "profile"
+      render :settings, :layout => "profile"
     end
   end
 

@@ -1,0 +1,36 @@
+<fieldset>
+  <legend>
+    Change Password
+  </legend>
+
+  <%= form_tag change_password_user_path(@user), :method => :post do %>
+    <% if @user.errors.any? %>
+      <div class="error_messages">
+        <h4>Please correct the error(s) below:</h4>
+        <ul>
+          <% for message in @user.errors.full_messages %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="control-group">
+      <%= label_tag :password, "New Password", :class => 'control-label' %>
+      <div class="controls">
+        <%= password_field_tag :password, "", :required => true, :class => 'text_field' %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= label_tag :password_confirmation, "Confirm New Password", :class => 'control-label' %>
+      <div class="controls">
+        <%= password_field_tag :password_confirmation, "", :required => true, :class => 'text_field' %>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= submit_tag "Change my password!", :class => "btn btn-primary" %>
+    </div>
+  <% end %>
+
+</fieldset>

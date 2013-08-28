@@ -2,7 +2,11 @@ class PublicController < ApplicationController
 
   def index
     @school = School.all
-    session.delete(:school)
+    if current_user.present?
+      redirect_to home_schools_path
+    else
+      session.delete(:school)
+    end
   end
 
   def terms_of_service

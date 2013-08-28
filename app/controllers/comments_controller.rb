@@ -4,7 +4,10 @@ class CommentsController < ApplicationController
 
   def create
     comment = current_user.comments.create(params["comment"])
-    @url = comment.save ? request.referrer : nil
+    unless comment.save
+      flash[:alert] = "Sorry, comment could not be posted. Please, try again later."
+    end
+    redirect_to request.referrer
   end
 
 end

@@ -1,7 +1,0 @@
-$('#spinner').addClass('hidden');
-<% unless @error.present?  %>
-window.location.replace("<%= @url %>");
-<% else %>
-$('.error').html('');
-$('.error').html('Please Enter a valid URL');
-<% end %>

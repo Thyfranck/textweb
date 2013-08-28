@@ -1,7 +1,11 @@
 class SessionsController < ApplicationController
 
   def new
-    redirect_to home_schools_path if current_user
+    if session[:referrer].present?
+      redirect_to session.delete(:referrer)
+    elsif current_user
+      redirect_to home_schools_path
+    end
   end
 
   def create

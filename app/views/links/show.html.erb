@@ -24,7 +24,10 @@
           </div>
         </div>
       </div>
-      <%= render "courses/vote_arrow", :link => @link %>
+
+      <div class="span1 vote-container" id="vote_container_<%= @link.id %>">
+        <%= render "links/vote", :link => @link %>
+      </div>
     </div>
 
 

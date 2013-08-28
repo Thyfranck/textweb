@@ -5,7 +5,7 @@ class CreateLinks < ActiveRecord::Migration
       t.integer :user_id
       t.string  :url
       t.text    :description
-      t.integer :vote
+      t.integer :vote,        :default => 0
       t.string  :status
 
       t.timestamps

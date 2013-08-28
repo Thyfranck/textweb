@@ -10,32 +10,30 @@ Textweb::Application.routes.draw do
   get "signup" => "users#new", :as => "signup"
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
-#  post '/comments' => "comments#create", :as => "comments"
-
-#  get '/links/:id', to: 'links#show', :as => 'link'
-
-  match '/vote' => 'links#vote', :as => 'vote'
 
   get '/courses/:course_id', to: 'courses#show', :as => 'course'
   get '/courses/:course_id/topics/:topic_id', to: 'courses#show', :as => 'course_topic'
   get '/courses/:course_id/topics/:topic_id/sections/:section_id', to: 'courses#show', :as => 'course_topic_section'
   get '/courses/:course_id/topics/:topic_id/sections/:section_id/links/:link_id', to: 'links#show', :as => 'course_topic_section_link'
 
-
   
   resources :sessions, :only => [:new, :create, :destroy]
 
   resources :comments, :only => [:create]
   
-  resources :links, :only => [:create]
+  resources :links, :only => [:create] do
+    member do
+      get :vote
+    end
+  end
 
   resources :users do
     member do
       get :email_verification
       get :email_confirmation_page
       post :resend_activation_email
-      get :profile
       post :change_password
+      get :settings
     end
   end
 
@@ -46,8 +44,6 @@ Textweb::Application.routes.draw do
       get :courses
     end
   end
-
-  match 'school-home' => 'schools#home', :as => :school_home
   
   root :to => 'public#index'
 

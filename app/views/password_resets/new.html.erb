@@ -1,1 +1,24 @@
-<%= render "sessions/forgot_password_form" %>
+<div class="well-wrap well">
+  <div class="title">
+    Reset Password
+  </div>
+
+  <div class="panel-content">
+    <%= form_tag password_resets_path, :method => :post do %>
+      <div class="notice">
+        Insert Email address to get reset password link.
+      </div>
+      <div class="text-input-container">
+        <%= email_field_tag :email, "", :placeholder => "Email Address", :class => 'text_field', :required => true %>
+      </div>
+
+      <%= submit_tag "Reset my password!", :class => "btn btn-info login-btn" %>
+    <% end %>
+  </div>
+
+  <div class="panel-footer">
+    Back to login page?
+    <%= link_to "Log in", login_path %>
+  </div>
+
+</div>

@@ -16,19 +16,20 @@ ActiveAdmin.register Link do |link|
       link.description.truncate(40) if link.description.present?
     end
     column :vote
-    column :status
+    column :status do |link|
+      link.status.blank? ? "New" : link.status
+    end
     column :created_at
     column "Manage" do |link|
-      link_to "Approve", approve_admin_link_path(link)
+      link_to "Approve", approve_admin_link_path(link) unless link.approved?
     end
     default_actions
   end
 
   member_action :approve do
     @link = Link.find(params[:id])
-    @link.update_attribute(:status, Link::STATUS[:approved])
-    @msg = "Link approved"
-    redirect_to admin_links_path, :notice => @msg
+    @link.approve
+    redirect_to admin_links_path, :notice => "Link approved"
   end
   
 end

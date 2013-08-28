@@ -1,20 +1,37 @@
-<%= form_tag resend_activation_email_user_path(@user), :method => :post do  %>
-  Have not got email yet ? <%= submit_tag "Resend Email" %>
-<% end %>
-<br />
-<br />
-<br />
-<br />
-<br />
-
-<%= form_tag resend_activation_email_user_path(@user), :method => :post do %>
-  Also, you can try using a different email address
-
-  <div class="field">
-    <%= label_tag :email %>
-    <%= text_field_tag :email, params[:email] %>
+<div class="well-wrap well">
+  <div class="title">
+    Email Confirmation
   </div>
-  <%= submit_tag "Try with new email" %>
-<% end %>
 
+  <div class="panel-content">
+    <%= form_tag resend_activation_email_user_path(@user), :method => :post do  %>
+      <div class="notice">
+        Confirmation email not received ?
+      </div>
+      <%= submit_tag "Resend Email", :class => "btn btn-info login-btn" %>
+    <% end %>
 
+    <div class="signup-or-separator shift">
+      <span class="text">or</span>
+      <hr/>
+    </div>
+
+    <%= form_tag resend_activation_email_user_path(@user), :method => :post do %>
+      <div class="notice">
+        You can try using a different email address.
+      </div>
+
+      <div class="text-input-container">
+        <%= text_field_tag :email, params[:email], :placeholder => "Email Address", :class => 'text_field small', :required => true %>
+        <div class="postfix"><%= "@#{current_school.email_postfix}" %></div>
+      </div>
+
+      <%= submit_tag "Try with another email", :class => "btn btn-info login-btn" %>
+    <% end %>
+  </div>
+
+  <div class="panel-footer">
+    Already a member?
+    <%= link_to "Log in", login_path %>
+  </div>
+</div>

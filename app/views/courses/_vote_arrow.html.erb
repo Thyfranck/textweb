@@ -1,9 +1,0 @@
-<% unless link.user == current_user %>
-  <div class="span1">
-    <div class="row-fluid">
-      <div class="arrow-up" id="<%= link.id %>"></div>
-      <div class="arrow-text" id="vote_<%= link.id %>"><%= link.vote || 0 %></div>
-      <div class="arrow-down" id="<%= link.id %>"></div>
-    </div>
-  </div>
-<% end %>

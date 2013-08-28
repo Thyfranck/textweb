@@ -1,10 +1,8 @@
-<%= form_for comment, :remote => true do |f| %>
+<%= form_for comment do |f| %>
   <h3><small>Post a comment</small></h3>
   <div class="error"></div>
   <div class="success-notice"></div>
   <%= f.hidden_field :link_id %>
-  <%= f.text_area :content, :style => "width: 90%; height: 60px;" %><br />
-  <%= f.submit "Post", :class => "btn btn-primary ajax-submit-loader" %>
-  <%= image_tag "spinner.gif", :class => "hidden", :id => "spinner" %>
+  <%= f.text_area :content, :required => true, :style => "width: 90%; height: 60px;" %><br />
+  <%= f.submit "Post", :class => "btn btn-primary" %>
 <% end %>
-  

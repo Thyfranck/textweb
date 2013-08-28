@@ -17,10 +17,8 @@ class Link < ActiveRecord::Base
     :deleted => "DELETED"
   }
 
-  before_create :set_vote
-
-  def set_vote
-    self.vote = 0
+  def name
+    self.host
   end
 
   def youtube?
@@ -40,6 +38,25 @@ class Link < ActiveRecord::Base
     user = User.find(user_id)
     @votes = user.votes.where("link_id = ?", self.id)
     return @votes.present? ? @votes.first.id : nil
+  end
+
+  def approve
+    self.status = STATUS[:approved]
+    self.save
+  end
+
+  def approved?
+    self.status == STATUS[:approved]
+  end
+
+  def up_voted_by(user)
+    vote = self.votes.find_by_user_id(user.id)
+    vote.present? and vote.up and !vote.down ? true : false
+  end
+
+  def down_voted_by(user)
+    vote = self.votes.find_by_user_id(user.id)
+    vote.present? and !vote.up and vote.down ? true : false
   end
 
 end

@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
 
   around_filter :catch_not_found if Rails.env != "development"
 
-
   def catch_not_found
     yield
   rescue ActiveRecord::RecordNotFound
@@ -33,6 +32,7 @@ class ApplicationController < ActionController::Base
 
   def require_current_school
     if current_school.blank?
+      session[:referrer] = request.url
       redirect_to root_path , :alert => "Please select your school."
     end
   end
