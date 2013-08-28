@@ -3,7 +3,7 @@
 
     <div class="arrow-up deactive"></div>
     <div class="arrow-text">
-      <%= link.vote %>
+      <%= link.vote || 0 %>
     </div>
     <div class="arrow-down deactive"></div>
 
@@ -18,7 +18,7 @@
     <% end %>
 
     <div class="arrow-text">
-      <%= link.vote %>
+      <%= link.vote || 0 %>
     </div>
 
     <% if link.down_voted_by(current_user) %>
