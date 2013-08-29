@@ -5,7 +5,8 @@ class PublicController < ApplicationController
     if current_user.present?
       redirect_to home_schools_path
     else
-      session.delete(:school)
+      set_current_school(School.first.id)
+      #session.delete(:school)
     end
   end
 
