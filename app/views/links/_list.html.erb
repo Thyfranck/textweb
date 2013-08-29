@@ -1,5 +1,5 @@
 <% if @approved_links.any? %>
-  <h5>Approved Links of this Topic</h5>
+  <h5>Approved links for this Course</h5>
   <legend></legend>
   <div class="span12 well links-container">
     <% @approved_links.each_with_index do |link, index| %>
@@ -10,7 +10,7 @@
   </div>
 <% end %>
 <% if @unapproved_links.any? %>
-  <h5>User submitted links of this Course</h5>
+  <h5>User submitted links for this Course</h5>
   <legend></legend>
   <div class="span12 well links-container">
     <% @unapproved_links.each_with_index do |link, index| %>

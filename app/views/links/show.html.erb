@@ -37,7 +37,7 @@
         <% if @youtube_link.present? %>
           <div id="ytplayer"></div>
         <% else %>
-          <iframe src="<%= @link.iframe_url %>" class="link-view">
+          <iframe src="<%= @link.iframe_url %>" class="link-view" sandbox="allow-top-navigation">
             <p>Your browser does not support iframes.</p>
           </iframe>
         <% end %>
@@ -120,5 +120,8 @@
         }
       }
   <% end %>
+
+    
+
   </script>
 <% end %>

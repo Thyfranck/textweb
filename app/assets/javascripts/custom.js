@@ -15,6 +15,17 @@ $(document).ready(function(){
         }
     });
 
+
+    $("#submit-toggle").click(function(){
+        $('.toggle-form').slideToggle('slow', function() {
+            // Animation complete.
+            });
+    });
+
+    $('.toggle-form').submit(function() {
+        $('.toggle-form').slideToggle('slow');
+    });
+
     $('.ajax-submit-loader').click(function(){
         $('#spinner').removeClass('hidden');
     });
