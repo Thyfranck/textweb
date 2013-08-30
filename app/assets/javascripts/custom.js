@@ -26,6 +26,8 @@ $(document).ready(function(){
         $('.toggle-form').slideToggle('slow');
     });
 
+    $('.course-show-container').css('min-height', $(window).height() + 'px');
+
     $('.ajax-submit-loader').click(function(){
         $('#spinner').removeClass('hidden');
     });

@@ -21,7 +21,7 @@
     background-color: #CACACA;
     padding-bottom: 5px;
     padding-top: 5px;
-    margin-top: -19px;
+    margin-top: -20px;
     margin-bottom: 20px;
 }
 
@@ -532,4 +532,8 @@ a.list-group-item {
 
 .toggle-form {
     display: none;
+}
+
+.navbar .sharp-ended {
+    border-radius: 0;
 }

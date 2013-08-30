@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
   end
 
   def not_authenticated
-    redirect_to login_url, :alert => "First log in to view this page."
+    redirect_to login_url, :alert => "You must be logged in to view the contents of this page! Sign in."
   end
 
   def require_current_school
