@@ -1,5 +1,5 @@
 class Notification < ActionMailer::Base
-  default from: "\"TextWeb\" <info@textweb.com>"
+  default from: "\"CourseLinks\" <info@courselinks.co>"
 
   def activation_needed_email(user)
     @user = user
