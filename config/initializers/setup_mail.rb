@@ -1,10 +1,9 @@
 #ActionMailer::Base.delivery_method = :smtp
 ActionMailer::Base.smtp_settings = {
-  :address              => "smtp.gmail.com",
-  :port                 => 587,
+  :address              => "smtpout.secureserver.net",
+  :port                 => 3535,
   :domain               => "courselinks.co",
-  :user_name            => "contact@mhbweb.com",
-  :password             => "qwerty$123",
-  :authentication       => "plain",
-  :enable_starttls_auto => true
+  :user_name            => "info@courselinks.co",
+  :password             => "virginia10",
+  :authentication       => "plain"
 }
