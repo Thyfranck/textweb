@@ -1,5 +1,17 @@
 Textweb::Application.routes.draw do
 
+  namespace :admin do
+    resources :schools do
+      resources :courses do
+        resources :topics do
+          resources :sections do
+            resources :links
+          end
+        end
+      end
+    end
+  end
+
   match 'terms-of-service' => 'public#terms_of_service', :as => :terms
   match 'privacy' => 'public#privacy', :as => :privacy
 

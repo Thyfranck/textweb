@@ -212,6 +212,7 @@ DEPENDENCIES
   carrierwave
   coffee-rails (~> 3.2.1)
   execjs
+  inherited_resources
   jquery-rails (= 2.3.0)
   less-rails
   mysql2

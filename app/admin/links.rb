@@ -1,4 +1,5 @@
 ActiveAdmin.register Link do |link|
+  menu false
   config.per_page = 50
   
   actions :all, :except => [:new, :edit]
@@ -31,5 +32,9 @@ ActiveAdmin.register Link do |link|
     @link.approve
     redirect_to admin_links_path, :notice => "Link approved"
   end
-  
+
+  controller do
+    nested_belongs_to :school, :course, :topic, :section
+  end
+
 end
