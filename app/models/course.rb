@@ -5,6 +5,7 @@ class Course < ActiveRecord::Base
 
   belongs_to :school
   has_many :topics, :dependent => :destroy
+  has_many :moderators, :dependent => :destroy
 
   validates :school_id,   :presence => true
   validates :name,        :presence => true

@@ -51,7 +51,7 @@ class LinksController < ApplicationController
 
   def approve
     @link = Link.find(params[:id])
-    if current_course_admin(@link)
+    if current_user.moderator?(@link.section.topic.course)
       @link.approved? ? @link.unapprove : @link.approve
     end
     redirect_to request.referrer
@@ -59,7 +59,7 @@ class LinksController < ApplicationController
 
   def destroy
     @link = Link.find(params[:id])
-    if current_course_admin(@link)
+    if current_user.moderator?(@link.section.topic.course)
       @link.destroy
     end
     redirect_to request.referrer

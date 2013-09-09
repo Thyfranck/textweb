@@ -3,9 +3,9 @@
 one:
   user_id: 1
   course_id: 1
-  active: false
+  status: MyString
 
 two:
   user_id: 1
   course_id: 1
-  active: false
+  status: MyString

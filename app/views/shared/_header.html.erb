@@ -6,17 +6,20 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-      <% if current_user.present? %>
-        <%= link_to home_schools_path, :class => "brand" do %>
-          <span style="color: green">C</span>ourse<span style="color: lightblue">L</span>inks
-        <% end %>
-      <% else %>
-        <%= link_to root_path, :class => "brand" do %>
-          <span style="color: green">C</span>ourse<span style="color: lightblue">L</span>inks
-        <% end %>
+
+      <%= link_to current_user.present? ? home_schools_path : root_path, :class => "brand" do %>
+        <span style="color: green">C</span>ourse <span style="color: lightblue">L</span>inks
       <% end %>
 
-      <div class="container-fluid nav-collapse pull-right">
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li>
+           <%= link_to "Learn More", "javascript:;" %>
+          </li>
+        </ul>
+      </div>
+
+      <div class="nav-collapse pull-right">
         <ul class="nav">
           <% if current_user %>
             <li>

@@ -62,7 +62,7 @@
 
               <div class="span1">
                 <%= link_to image_tag("iphone_reply_icon.png", :width => "23px;", :class => "reply close pull-left", :title => "Reply"), "javascript:void(0)" %>
-                <% if comment.user == current_user or current_course_admin(comment) %>
+                <% if comment.user == current_user or current_user.moderator?(@course) %>
                   <%= link_to "x", comment_path(comment), :method => :delete, :confirm => "Are you sure want to delete this comment?", :class => "close", :title => "Remove" %>
                 <% end %>
               </div>

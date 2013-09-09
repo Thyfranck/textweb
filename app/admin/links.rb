@@ -20,7 +20,7 @@ ActiveAdmin.register Link do
     end
     column :vote
     column :status do |link|
-      link.status.blank? ? "New" : link.status
+      link.status.blank? ? "N/A" : link.status
     end
     column :created_at
     column "Manage" do |link|

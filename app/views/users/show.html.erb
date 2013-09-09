@@ -2,5 +2,22 @@
   <legend>
     Welcome, <%= @user.name %>
   </legend>
-  
+
+  <div class="moderators">
+    <% if @user.moderators.present? %>
+      <h5>
+        You are moderator of
+        <%= pluralize(@user.moderators.count, "course") %>
+        below:
+      </h5>
+      <ul>
+        <% @user.moderators.each do |md| %>
+          <li>
+            <%= link_to "#{md.course.name} - #{md.course.title}", md.course %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+
 </fieldset>

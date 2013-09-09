@@ -442,13 +442,11 @@ div.underline {
 
 .item .single-course-image {
     display: inline-block;
-    width: 100%;
-    padding: 5% 0 0;
+    width: 90%;
+    padding: 5%;
     border-top: 1px solid #cccccc;
-}
-
-.item .single-course-image img {
-    border-radius: 0px 0px 8px 8px;
+    height: 220px;
+    overflow: hidden;
 }
 
 .list-group-item {
@@ -473,6 +471,21 @@ a.list-group-item {
 
 .list-group-item.active .list-group-item-heading, .list-group-item.active:hover .list-group-item-heading, .list-group-item.active:focus .list-group-item-heading {
     color: inherit;
+}
+
+.link-container{
+    position: relative;
+}
+
+.manage-btns{
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    z-index: 1000;
+}
+
+.manage-btns {
+
 }
 
 .panel-primary > .panel-heading {

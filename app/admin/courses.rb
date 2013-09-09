@@ -13,11 +13,11 @@ ActiveAdmin.register Course do
     column :school
     column :name
     column :title
-    column :description do |course|
-      course.description.truncate(40) if course.description.present?
-    end
     column "Topics" do |c|
       link_to "Topics", admin_school_course_topics_path(c.school.id, c.id)
+    end
+    column "Moderators" do |c|
+      link_to "Admins", admin_school_course_moderators_path(c.school.id, c.id)
     end
     column :created_at
     default_actions

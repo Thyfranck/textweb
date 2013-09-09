@@ -8,7 +8,7 @@
     </div>
 
     <div class="span1">
-      <% if r.user == current_user or current_course_admin(r) %>
+      <% if r.user == current_user or current_user.moderator?(@course) %>
         <%= link_to "x", reply_path(r), :method => :delete, :confirm => "Are you sure want to delete this thread?", :class => "close", :title => "Remove" %>
       <% end %>
     </div>   

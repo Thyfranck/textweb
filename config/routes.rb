@@ -3,6 +3,7 @@ Courselinks::Application.routes.draw do
   namespace :admin do
     resources :schools do
       resources :courses do
+        resources :moderators
         resources :topics do
           resources :sections do
             resources :links
