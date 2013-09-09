@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Textweb::Application.load_tasks
+Courselinks::Application.load_tasks

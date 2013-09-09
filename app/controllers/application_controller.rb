@@ -9,6 +9,32 @@ class ApplicationController < ActionController::Base
     redirect_to root_url, :flash => { :error => "Record not found." }
   end
 
+  def current_course_admin(object)
+    if object.class == Link
+      @id = object.section.topic.course.id
+    elsif object.class == Section
+      @id = object.topic.course.id
+    elsif object.class == Topic
+      @id = object.course.id
+    elsif object.class == Comment
+      @id = object.link.section.topic.course.id
+    elsif object.class == Reply
+      @id = object.comment.link.section.topic.course.id
+    elsif object.class == Course
+      @id = object.id
+    elsif object.class == Vote
+      @id = object.link.section.topic.course.id
+    end
+    if @id
+      return CourseAdmin.where("user_id = ? AND course_id = ? AND active = ?", current_user.id, @id, true).blank? ? false : true
+    else
+      return false
+    end
+  end
+
+  hide_action :current_course_admin
+  helper_method :current_course_admin
+
   def current_school
     if current_user
       @current_school = current_user.school

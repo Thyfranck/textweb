@@ -1,5 +1,5 @@
 <%= link_to course_topic_section_link_path(@course.id, @topic.id, @section.id, link.id),
-  :class => "#{index.odd? ? 'ash'  : 'white'} list-group-item link_section span11"  do %>
+  :class => "#{link.approved? ? 'approved_link' : index.odd? ? 'ash'  : 'white'} list-group-item link_section span11"  do %>
   <div class="row-fluid">
     <div class="span12 single-course-description">
       <%= link.description.truncate(115) %>
@@ -23,6 +23,10 @@
 <div class="span1 vote-container" id="vote_container_<%= link.id %>">
   <%= render "links/vote", :link => link %>
 </div>
+<% if current_course_admin(link) %>
+  <%= link_to "#{link.approved? ? "Unapprove" : "Approve"}", approve_link_path(link), :class => "btn btn-primary" %>
+  <%= link_to "Delete", link_path(link), :method => :delete, :confirm => "Are you sure",:class => "btn btn-primary" %>
+<% end %>
 
 
 

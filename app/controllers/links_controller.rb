@@ -49,4 +49,20 @@ class LinksController < ApplicationController
     @youtube_link = @link.youtube?
   end
 
+  def approve
+    @link = Link.find(params[:id])
+    if current_course_admin(@link)
+      @link.approved? ? @link.unapprove : @link.approve
+    end
+    redirect_to request.referrer
+  end
+
+  def destroy
+    @link = Link.find(params[:id])
+    if current_course_admin(@link)
+      @link.destroy
+    end
+    redirect_to request.referrer
+  end
+
 end

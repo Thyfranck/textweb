@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :links,    :dependent => :destroy
   has_many :comments, :dependent => :destroy
   has_many :votes,    :dependent => :destroy
+  has_many :replies,  :dependent => :destroy
 
   validates :school_id, :presence => true
   validates :first_name, :presence => true
@@ -45,5 +46,9 @@ class User < ActiveRecord::Base
   def active?
     self.activation_state == "active"
   end
+
+#  def admin?(course_id)
+#    return CourseAdmin.where("user_id = ? AND course_id = ? AND active = ?", self.id, course_id, true).blank? ? false : true
+#  end
 
 end

@@ -36,8 +36,8 @@
 }
 
 #banner a.school-home{
-   color: white;
-   text-decoration: none;
+    color: white;
+    text-decoration: none;
 }
 
 .home-wrap{
@@ -482,11 +482,11 @@ a.list-group-item {
 }
 
 .link_section:hover {
-/*    background-color: #428BCA;*/
+    /*    background-color: #428BCA;*/
     background-color: #f5f5f5;
-/*    border-color: #428BCA;*/
-/*    border-color: #f5f5f5;*/
-/*  color: #ffffff;*/
+    /*    border-color: #428BCA;*/
+    /*    border-color: #f5f5f5;*/
+    /*  color: #ffffff;*/
     z-index: 2;
 }
 
@@ -496,7 +496,7 @@ a.list-group-item {
 }
 
 .link_section:hover h4 {
-/*    color: #ffffff;*/
+    /*    color: #ffffff;*/
 }
 
 .link_section .single-course-description {
@@ -510,15 +510,15 @@ a.list-group-item {
 }
 
 .link_section:hover .link-small-info {
-/*    color: #ffffff;*/
+    /*    color: #ffffff;*/
 }
 
 .link_section:hover .single-course-description {
-/*    color: #ffffff;*/
+    /*    color: #ffffff;*/
 }
 
 .ash {
-/*    background-color: #f8f8f8;*/
+    /*    background-color: #f8f8f8;*/
     background-color: #ffffff;
 }
 
@@ -536,4 +536,22 @@ a.list-group-item {
 
 .navbar .sharp-ended {
     border-radius: 0;
+}
+
+a.approved_link {
+    background-color: green;
+    color: white;
+}
+
+a.approved_link:hover {
+    background-color: darkgreen;
+    color: white;
+}
+
+.approved_link .link-small-info {
+    color: white;
+}
+
+.approved_link .single-course-description{
+    color: white;
 }

@@ -56,16 +56,38 @@
               <div class="span2" style="color: #87a6d5;">
                 <strong><%= comment.user.name %></strong>
               </div>
-              <div class="span10">
+              <div class="span9">
                 <%= comment.content %>
               </div>
+
+              <div class="span1">
+                <%= link_to image_tag("iphone_reply_icon.png", :width => "23px;", :class => "reply close pull-left", :title => "Reply"), "javascript:void(0)" %>
+                <% if comment.user == current_user or current_course_admin(comment) %>
+                  <%= link_to "x", comment_path(comment), :method => :delete, :confirm => "Are you sure want to delete this comment?", :class => "close", :title => "Remove" %>
+                <% end %>
+              </div>
+
             </div>
             <div class="row-fluid">
               <div class="span10 offset2" style="color: #777777;">
                 <%="#{time_ago_in_words(comment.created_at)} ago "%>
+                <% if comment.replies.any? %>
+                  <br/>
+                  <br/>
+                  <%= link_to "Show #{pluralize(comment.replies.count, "Reply")}", "javascript:void(0)", :class => "show_replies" %>
+                <% end %>
+                <div class="replies" style="display:none">
+                  <% comment.replies.each do |r| %>
+                    <%= render 'replies/show', :r => r %>
+                  <% end %>
+                </div>
+                <div class="reply_form" style="display:none">
+                  <%= render "replies/form", :reply => comment.replies.new %>
+                </div>
               </div>
             </div>
           </div>
+
         <% end %>
 
         <div class="row-fluid">

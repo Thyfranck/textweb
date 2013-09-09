@@ -10,4 +10,9 @@ class CommentsController < ApplicationController
     redirect_to request.referrer
   end
 
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy and redirect_to request.referrer
+  end
+
 end

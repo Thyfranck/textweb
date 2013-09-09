@@ -1,4 +1,4 @@
-Textweb::Application.routes.draw do
+Courselinks::Application.routes.draw do
 
   namespace :admin do
     resources :schools do
@@ -16,6 +16,7 @@ Textweb::Application.routes.draw do
   match 'privacy' => 'public#privacy', :as => :privacy
 
   resources :password_resets
+  resources :replies, :only => [:create, :destroy]
 
   get "signup" => "users#new", :as => "signup"
   get "logout" => "sessions#destroy", :as => "logout"
@@ -29,11 +30,12 @@ Textweb::Application.routes.draw do
   
   resources :sessions, :only => [:new, :create, :destroy]
 
-  resources :comments, :only => [:create]
+  resources :comments, :only => [:create, :destroy]
   
-  resources :links, :only => [:create] do
+  resources :links, :only => [:create, :destroy] do
     member do
       get :vote
+      get :approve
     end
   end
 

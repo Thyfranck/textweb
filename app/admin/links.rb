@@ -1,10 +1,12 @@
-ActiveAdmin.register Link do |link|
+ActiveAdmin.register Link do
   menu false
   config.per_page = 50
   
   actions :all, :except => [:new, :edit]
+  
   action_item only:[:show] do
-    link_to "Approve", approve_admin_link_path
+    @link = Link.find(params[:id])
+    link_to "#{@link.approved? ? "Unapprove": "Approve"}", approve_admin_link_path
   end
 
   index do
@@ -22,15 +24,15 @@ ActiveAdmin.register Link do |link|
     end
     column :created_at
     column "Manage" do |link|
-      link_to "Approve", approve_admin_link_path(link) unless link.approved?
+      link_to "#{link.approved? ? "Unapprove" : "Approve"}", approve_admin_link_path(link)
     end
     default_actions
   end
 
   member_action :approve do
     @link = Link.find(params[:id])
-    @link.approve
-    redirect_to admin_links_path, :notice => "Link approved"
+    @link.approved? ? @link.unapprove : @link.approve
+    redirect_to admin_school_course_topic_section_links_path(@link.section.topic.course.school.id,@link.section.topic.course.id,@link.section.topic.id,@link.section.id), :notice => "Link #{@link.approved? ? "approved" : "unapproved"}"
   end
 
   controller do

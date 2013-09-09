@@ -1,0 +1,9 @@
+<%= form_for reply do |f| %>
+  <h3><small>Reply</small></h3>
+  <div class="error"></div>
+  <div class="success-notice"></div>
+  <%= f.hidden_field :comment_id %>
+  <%= f.text_area :content, :required => true, :style => "width: 90%; height: 60px;" %><br />
+  <%= f.submit "Reply", :class => "btn btn-primary" %>
+  <%= link_to "Cancel", 'javascript:void(0)', :class => "btn btn-danger cancel_reply" %>
+<% end %>

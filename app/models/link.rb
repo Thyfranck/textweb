@@ -45,6 +45,11 @@ class Link < ActiveRecord::Base
     self.save
   end
 
+  def unapprove
+    self.status = nil
+    self.save
+  end
+
   def approved?
     self.status == STATUS[:approved]
   end
