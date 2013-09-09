@@ -442,9 +442,13 @@ div.underline {
 
 .item .single-course-image {
     display: inline-block;
-    width: 90%;
-    padding: 5%;
+    width: 100%;
+    padding: 5% 0 0;
     border-top: 1px solid #cccccc;
+}
+
+.item .single-course-image img {
+    border-radius: 0px 0px 8px 8px;
 }
 
 .list-group-item {
