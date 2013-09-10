@@ -449,6 +449,10 @@ div.underline {
     overflow: hidden;
 }
 
+.item .single-course-image img{
+    height: 228px;
+}
+
 .list-group-item {
     background-color: #FFFFFF;
     border: 1px solid #DDDDDD;
