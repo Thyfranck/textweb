@@ -1,4 +1,5 @@
 class Course < ActiveRecord::Base
+  self.per_page = 10
   mount_uploader :image, ImageUploader
 
   attr_accessible :name, :school_id, :description, :title, :image

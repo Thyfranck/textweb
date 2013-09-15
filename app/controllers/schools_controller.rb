@@ -5,12 +5,11 @@ class SchoolsController < ApplicationController
 
   def home
     set_current_school(School.first.id)
-    @courses = current_school.courses.order("courses.name ASC").limit(School::COURSE_PER_PAGE)
+    @courses = current_school.courses.page(params[:page]).order("courses.name ASC")
   end
 
   def courses
-    page = params[:page].to_i
-    @courses = current_school.courses.order("courses.name ASC").limit(School::COURSE_PER_PAGE).offset((page - 1)*School::COURSE_PER_PAGE)
+    @courses = current_school.courses.page(params[:page]).order("courses.name ASC")
     respond_to do |format|
       format.js
     end
