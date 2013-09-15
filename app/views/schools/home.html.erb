@@ -25,40 +25,49 @@
 
       $('#container').css('min-height', $(window).height() + 'px');
 
-      courses = "exists";
-      page = 2;
+      var courses = "exists";
+      var page = 2;
+      var isFetching = false;
+      
       $(window).scroll(function () {
         if(courses == "exists")
         {
           if ($(window).height() + $(window).scrollTop() == $(document).height()) {
             no=2;
-            $.ajax({
-              type: "GET",
-              url: "<%= courses_schools_path %>/?page=" + page,
-              dataType: 'html',
-              //data: datas,
-              cache: false,
-              beforeSend: function(){
-                $('.ajax-loader').css('display', 'block');
-              },
-              success: function(html){
-                var elems = [];
-                page = page + 1;
-                $('.ajax-loader').css('display', 'none');
-                if ($.trim(html) == "empty"){
-                  courses = "empty";
-                }else{
-                  var html_array = html.split('||separator||');
+            
+            if(isFetching == false){
+              isFetching = true;
+              
+              $.ajax({
+                type: "GET",
+                url: "<%= courses_schools_path %>/?page=" + page,
+                dataType: 'html',
+                //data: datas,
+                cache: false,
+                beforeSend: function(){
+                  $('.ajax-loader').css('display', 'block');
+                },
+                success: function(html){
+                  var elems = [];
+                  page = page + 1;
+                  $('.ajax-loader').css('display', 'none');
+                  if ($.trim(html) == "empty"){
+                    courses = "empty";
+                  }else{
+                    var html_array = html.split('||separator||');
 
-                  $.each(html_array, function(index, result) {
-                    result = $.parseHTML(result)[1];
-                    elems.push(result);
-                    container.appendChild( result );
-                  });
-                  msnry.appended( elems );
+                    $.each(html_array, function(index, result) {
+                      result = $.parseHTML(result)[1];
+                      elems.push(result);
+                      container.appendChild( result );
+                    });
+                    msnry.appended( elems );
+                  }
+                  isFetching = false;
                 }
-              }
-            });
+              });
+            }
+
           }
         }
       });
