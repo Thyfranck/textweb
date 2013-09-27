@@ -11,6 +11,16 @@ class Link < ActiveRecord::Base
   validates :url,         :presence => true, :format => { :with => /(^$)|([a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$)/ix }
   validates :description, :presence => true
 
+  before_save :check_validity
+
+  def check_validity
+    begin
+    URI.parse(self.url)
+    rescue URI::InvalidURIError
+      return false
+    end
+  end
+
   STATUS = {
     :approved => "APPROVED",
     :blocked => "BLOCKED",
