@@ -8,6 +8,7 @@ gem 'carrierwave'
 gem 'activeadmin'
 gem 'inherited_resources'
 gem 'will_paginate', '~> 3.0'
+gem 'exception_notification'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
