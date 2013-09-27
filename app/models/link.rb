@@ -15,7 +15,10 @@ class Link < ActiveRecord::Base
 
   def check_validity
     begin
-    URI.parse(self.url)
+      uri = URI.parse(self.url)
+      if uri.host.include?("youtube.com")
+        self.url = self.url.gsub("feature=player_embedded&", "")
+      end
     rescue URI::InvalidURIError
       return false
     end
