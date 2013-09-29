@@ -584,3 +584,22 @@ a.approved_link:hover {
     padding: 10px 15px 10px 15px;
 
 }
+
+.pull-center{
+    width: 128px;
+    margin: 0 auto;
+}
+
+.navbar-inverse .nav > li > a.suggest-course{
+    color: white;
+    padding: 3px 12px;
+}
+
+.navbar-inverse .nav > li > a.suggest-course:hover,
+.navbar-inverse .nav > li > a.suggest-course:focus{
+    background-color: #2F96B4;
+}
+
+.suggest-course-container{
+    width: 500px;
+}

@@ -1,0 +1,30 @@
+<div class="suggest-course-container">
+  <div class="row-fluid">
+    <div class="span12 well">
+      <legend>
+        Suggest Course
+      </legend>
+
+      <%= form_tag(suggest_course_path, :class => "form-horizontal") do %>
+        <%= fields_for :course do |c| %>
+          <div class="control-group">
+            <%= c.label :name, "Course Name", :class => 'control-label' %>
+            <div class="controls">
+              <%= c.text_field :name, :class => 'text_field', :placeholder => "Ex: Econ 201s", :required => true %>
+            </div>
+          </div>
+          <div class="control-group">
+            <%= c.label :title, "Course Title", :class => 'control-label' %>
+            <div class="controls">
+              <%= c.text_field :title, :class => 'text_field', :placeholder => "Ex: Macroeconomics", :required => true %>
+            </div>
+          </div>
+
+          <div class="form-actions">
+              <%= submit_tag "Submit", :class => "btn btn-info" %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

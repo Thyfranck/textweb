@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+    $("a.fancybox").fancybox();
+
     $('.show_replies').click(function(){
         $(this).next('div.replies').show();
         $(this).hide();

@@ -9,6 +9,7 @@ gem 'activeadmin'
 gem 'inherited_resources'
 gem 'will_paginate', '~> 3.0'
 gem 'exception_notification'
+gem 'fancybox-rails'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

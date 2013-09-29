@@ -18,4 +18,13 @@ class PublicController < ApplicationController
     
   end
 
+  def suggest_course
+    if request.post?
+      Notification.send_suggested_course(params[:course]).deliver
+      redirect_to request.referer, :notice => "Successfully submitted your suggestion."
+    else
+      render :layout => false
+    end
+  end
+
 end

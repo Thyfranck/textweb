@@ -78,6 +78,8 @@ GEM
       actionmailer (>= 3.0.4)
       activesupport (>= 3.0.4)
     execjs (2.0.0)
+    fancybox-rails (0.2.1)
+      railties (>= 3.1.0)
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
     fastercsv (1.5.5)
@@ -217,6 +219,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   exception_notification
   execjs
+  fancybox-rails
   inherited_resources
   jquery-rails (= 2.3.0)
   less-rails
