@@ -603,3 +603,11 @@ a.approved_link:hover {
 .suggest-course-container{
     width: 500px;
 }
+
+.nav.social{
+    padding-top: 11px;
+}
+
+.nav.social li{
+    margin-right: 10px;
+}
