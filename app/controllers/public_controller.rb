@@ -1,4 +1,5 @@
 class PublicController < ApplicationController
+  before_filter :require_login, :only => [:suggest_course]
 
   def index
     @school = School.all

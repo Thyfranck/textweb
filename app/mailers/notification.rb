@@ -27,7 +27,7 @@ class Notification < ActionMailer::Base
   def send_suggested_course(course, user)
     @course = course
     @user = user
-    mail(:to => "maruf@iconsbd.com",
+    mail(:to => "info@courselinks.co",
       :subject => "New Course Suggestion")
   end
 
