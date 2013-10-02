@@ -200,6 +200,10 @@
     width: 180px;
 }
 
+.well-wrap .text-input-container .email-input-append{
+    width: 100%;
+}
+
 .well-wrap .text-input-container .postfix {
     float: right;
     padding-top: 3px;
