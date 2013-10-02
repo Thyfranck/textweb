@@ -19,13 +19,15 @@
         </ul>
       </div>
 
-      <div class="nav-collapse suggest-course-menu">
-        <ul class="nav" style="margin-right: 0px;">
-          <li>
-            <%= link_to "Suggest a Course", suggest_course_path, :class => "btn btn-info suggest-course fancybox" %>
-          </li>
-        </ul>
-      </div>
+      <% if current_user %>
+        <div class="nav-collapse suggest-course-menu">
+          <ul class="nav" style="margin-right: 0px;">
+            <li>
+              <%= link_to "Suggest a Course", suggest_course_path, :class => "btn btn-info suggest-course fancybox" %>
+            </li>
+          </ul>
+        </div>
+      <% end %>
 
       <div class="nav-collapse pull-right">
         <ul class="nav">
