@@ -5,7 +5,7 @@
         Suggest a Course
       </legend>
 
-      <%= form_tag(suggest_course_path, :class => "form-horizontal") do %>
+      <%= form_tag(suggest_course_submit_path, :class => "form-horizontal") do %>
         <%= fields_for :course do |c| %>
           <div class="control-group">
             <%= c.label :name, "Course Name", :class => 'control-label' %>
