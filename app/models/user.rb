@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :votes,        :dependent => :destroy
   has_many :replies,      :dependent => :destroy
   has_many :moderators,   :dependent => :destroy
+  has_many :suggested_courses
 
   validates :school_id, :presence => true
   validates :first_name, :presence => true

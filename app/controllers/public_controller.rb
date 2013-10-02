@@ -25,7 +25,10 @@ class PublicController < ApplicationController
   def suggest_course_submit
     if current_user
       course = params[:course].present? ? params[:course] : session[:course_suggestion].present? ? session.delete(:course_suggestion) : nil
-      Notification.send_suggested_course(course, current_user).deliver if course.present?
+      if course.present?
+        current_user.suggested_courses.create(course)
+        Notification.send_suggested_course(course, current_user).deliver
+      end
       redirect_to root_path, :notice => "Successfully submitted your suggestion."
     else
       session[:course_suggestion] = params[:course]
