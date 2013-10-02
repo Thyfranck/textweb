@@ -36,7 +36,6 @@ ActiveAdmin.register_page "Dashboard" do
             li "Total Sections : #{Section.count}"
             li "Total Links : #{Link.count}"
             li "Total Comments : #{Comment.count + Reply.count}"
-            li "Total Votes to Link : #{Vote.count}"
             li "Total Up Votes : #{Vote.where(:up => true).count}"
             li "Total Down Votes : #{Vote.where(:down => true).count}"
             li "Total Users : #{User.count}"
