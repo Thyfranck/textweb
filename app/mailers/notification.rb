@@ -24,6 +24,13 @@ class Notification < ActionMailer::Base
       :subject => "Your password has been reset")
   end
 
+  def send_suggested_course(course, user)
+    @course = course
+    @user = user
+    mail(:to => "info@courselinks.co",
+      :subject => "New Course Suggestion")
+  end
+
 end
 
 

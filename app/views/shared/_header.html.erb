@@ -19,6 +19,14 @@
         </ul>
       </div>
 
+      <div class="nav-collapse suggest-course-menu">
+        <ul class="nav" style="margin-right: 0px;">
+          <li>
+            <%= link_to "Suggest a Course", suggest_course_path, :class => "btn btn-info suggest-course fancybox" %>
+          </li>
+        </ul>
+      </div>
+
       <div class="nav-collapse pull-right">
         <ul class="nav">
           <% if current_user %>
@@ -38,6 +46,48 @@
           <% end %>
         </ul>
       </div><!--/.nav-collapse -->
+
+
+      <div class="nav-collapse pull-right">
+        <ul class="nav social">
+          <li>
+            <div id="fb-root"></div>
+            <script>
+              (function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id))
+                  return;
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+                fjs.parentNode.insertBefore(js, fjs);
+                window.fbAsyncInit = function() {
+                  FB.init({
+                    appId: '362079183898081'
+                  });
+                };
+              }(document, 'script', 'facebook-jssdk'));
+            </script>
+            <div class="fb-like" data-href="https://www.facebook.com/Courselinks" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false" data-font="arial"></div>
+          </li>
+          <li>
+            <a href="https://twitter.com/courselinks" class="twitter-follow-button" data-show-count="false">Follow @Course Links</a>
+            <script>
+                !function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (!d.getElementById(id)) {
+                  js = d.createElement(s);
+                  js.id = id;
+                  js.src = "//platform.twitter.com/widgets.js";
+                  fjs.parentNode.insertBefore(js, fjs);
+                }
+              }(document, "script", "twitter-wjs");
+            </script>
+          </li>
+        </ul>
+      </div>
+
+
     </div>
   </div>
 </div>

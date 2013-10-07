@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require bootstrap
+//= require fancybox
 //= require jQuery.cssParentSelector
 //= require custom

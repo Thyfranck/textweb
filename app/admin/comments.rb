@@ -1,4 +1,6 @@
-ActiveAdmin.register Comment, :as => "PostComment" do
+ActiveAdmin.register Comment, :as => "CommentsToLink" do
+  menu :parent => "Comments"
+  
   config.per_page = 50
 
   filter :link
@@ -13,7 +15,6 @@ ActiveAdmin.register Comment, :as => "PostComment" do
     column :link
     column :user
     column :content
-    column :status
     column :created_at
     default_actions
   end

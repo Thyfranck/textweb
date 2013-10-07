@@ -13,6 +13,8 @@ Courselinks::Application.routes.draw do
     end
   end
 
+  match 'suggest-course-submit' => 'public#suggest_course_submit', :as => :suggest_course_submit
+  match 'suggest-course' => 'public#suggest_course', :as => :suggest_course
   match 'terms-of-service' => 'public#terms_of_service', :as => :terms
   match 'privacy' => 'public#privacy', :as => :privacy
 

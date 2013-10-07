@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+    $("a.fancybox").fancybox();
+
     $('.show_replies').click(function(){
         $(this).next('div.replies').show();
         $(this).hide();
@@ -49,4 +51,10 @@ $(document).ready(function(){
     $('#school_select').change(function(){
         $(this).closest("form").submit();
     });
+});
+
+$(document).ready(function(){
+    var field_width = $(".email-input-append .text_field").width();
+    var add_on_width = $(".email-input-append .add-on").width();
+    $(".email-input-append .text_field").css("width", (field_width - add_on_width - 11));
 });

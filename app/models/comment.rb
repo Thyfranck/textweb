@@ -16,4 +16,8 @@ class Comment < ActiveRecord::Base
     :blocked => "BLOCKED",
     :deleted => "DELETED"
   }
+
+  def name
+    self.content.truncate(50) if self.content.present?
+  end
 end

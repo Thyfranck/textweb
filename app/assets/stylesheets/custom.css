@@ -200,6 +200,10 @@
     width: 180px;
 }
 
+.well-wrap .text-input-container .email-input-append{
+    width: 100%;
+}
+
 .well-wrap .text-input-container .postfix {
     float: right;
     padding-top: 3px;
@@ -583,4 +587,31 @@ a.approved_link:hover {
     float: none;
     padding: 10px 15px 10px 15px;
 
+}
+
+.suggest-course-menu{
+    width: 140px;
+    margin: 0 auto;
+}
+
+.navbar-inverse .nav > li > a.suggest-course{
+    color: white;
+    padding: 3px 12px;
+}
+
+.navbar-inverse .nav > li > a.suggest-course:hover,
+.navbar-inverse .nav > li > a.suggest-course:focus{
+    background-color: #2F96B4;
+}
+
+.suggest-course-container{
+    width: 500px;
+}
+
+.nav.social{
+    padding-top: 11px;
+}
+
+.nav.social li{
+    margin-right: 10px;
 }
