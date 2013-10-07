@@ -9,6 +9,7 @@ class SchoolsController < ApplicationController
   end
 
   def courses
+    set_current_school(School.first.id)
     @courses = current_school.courses.page(params[:page]).order("courses.name ASC")
     respond_to do |format|
       format.js
