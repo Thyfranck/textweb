@@ -85,6 +85,8 @@ GEM
     fastercsv (1.5.5)
     formtastic (2.2.1)
       actionpack (>= 3.0)
+    friendly_id (4.0.10.1)
+      activerecord (>= 3.0, < 4.0)
     has_scope (0.6.0.rc)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
@@ -220,6 +222,7 @@ DEPENDENCIES
   exception_notification
   execjs
   fancybox-rails
+  friendly_id
   inherited_resources
   jquery-rails (= 2.3.0)
   less-rails

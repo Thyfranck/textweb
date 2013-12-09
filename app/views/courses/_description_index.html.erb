@@ -19,7 +19,7 @@
         <ul class="nav nav-list collapse <%= "in" if @topic_id.to_i == topic.id %>  " id="toggle<%= topic.id %>" style="margin-left: 10px;">
           <% topic.sections.each do |section| %>
             <li class="<%= "active" if @section_id.to_i == section.id %>">
-              <%= link_to section.name, course_topic_section_path(@course, topic.id, section.id) %>
+              <%= link_to section.name, course_topic_section_path(@course, topic.friendly_id, section.friendly_id) %>
             </li>
           <% end %>
         </ul>

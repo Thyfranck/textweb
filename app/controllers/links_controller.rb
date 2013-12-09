@@ -1,5 +1,5 @@
 class LinksController < ApplicationController
-  before_filter :require_login
+  before_filter :require_login, :except => [:show, :vote]
   
   def create
     @link = current_user.links.new(params[:link])
@@ -11,30 +11,37 @@ class LinksController < ApplicationController
     
     
   def vote
-    @link = Link.find(params[:id])
-    @vote_type = params[:rate]
-
-    unless @link.user.id == current_user.id
-    
-      @vote_id = @link.user_already_rated(current_user.id)
-    
-      if @vote_id.present?
-        @vote = Vote.find(@vote_id)
-        if @vote.up == @vote.down
-          @vote.update_attributes(@vote_type == "up" ? {:up => true, :down => false} : {:down => true, :up => false})
-        else
-          @vote.update_attributes(@vote_type == "up" ? {:up => true} : {:down => true})
-        end
-      else
-        @new_vote = @link.votes.create(@vote_type == "up" ? {:up => true, :user_id => current_user.id} : {:down => true, :user_id => current_user.id})
-      end
-   
-      @link = Link.find(params[:id])
-      
-    end
-      
     respond_to do |format|
-      format.js
+      if current_user
+        @link = Link.find(params[:id])
+        @vote_type = params[:rate]
+
+        unless @link.user.id == current_user.id
+
+          @vote_id = @link.user_already_rated(current_user.id)
+
+          if @vote_id.present?
+            @vote = Vote.find(@vote_id)
+            if @vote.up == @vote.down
+              @vote.update_attributes(@vote_type == "up" ? {:up => true, :down => false} : {:down => true, :up => false})
+            else
+              @vote.update_attributes(@vote_type == "up" ? {:up => true} : {:down => true})
+            end
+          else
+            @new_vote = @link.votes.create(@vote_type == "up" ? {:up => true, :user_id => current_user.id} : {:down => true, :user_id => current_user.id})
+          end
+
+          @link = Link.find(params[:id])
+
+        end
+        @no_user = false
+        format.js
+      else
+        @url = login_url
+        flash[:alert] = "You must be logged in to view the contents of this page! Sign in."
+        @no_user = true
+        format.js
+      end
     end
   end
 

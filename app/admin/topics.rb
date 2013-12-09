@@ -12,7 +12,7 @@ ActiveAdmin.register Topic do
     column :course
     column :name
     column "Sections" do |t|
-      link_to "Sections", admin_school_course_topic_sections_path(t.course.school.id, t.course.id, t.id)
+      link_to "Sections", admin_school_course_topic_sections_path(t.course.school.id, t.course.friendly_id, t.friendly_id)
     end
     column :created_at
     default_actions

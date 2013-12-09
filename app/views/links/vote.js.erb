@@ -1,1 +1,5 @@
-$('#vote_container_<%= @link.id %>').html("<%= escape_javascript(render("links/vote", :link => @link)).html_safe %>");
+<% if @no_user %>
+  window.location.replace("<%= @url %>");
+<% else %>
+  $('#vote_container_<%= @link.id %>').html("<%= escape_javascript(render("links/vote", :link => @link)).html_safe %>");
+<% end %>

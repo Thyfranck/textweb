@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
 
-  before_filter :require_login
+#  before_filter :require_login
   
   def show
     if params[:id]

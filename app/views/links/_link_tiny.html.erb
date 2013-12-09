@@ -1,5 +1,5 @@
 <div class="span11 link-container">
-  <%= link_to course_topic_section_link_path(@course.id, @topic.id, @section.id, link.id),
+  <%= link_to course_topic_section_link_path(@course.friendly_id, @topic.friendly_id, @section.friendly_id, link.id),
     :class => "#{link.approved? ? 'approved_link' : index.odd? ? 'ash'  : 'white'} list-group-item link_section"  do %>
     <div class="row-fluid">
       <div class="span12 single-course-description">
@@ -21,7 +21,7 @@
     </div>
   <% end %>
 
-  <% if current_user.moderator?(@course) %>
+  <% if current_user and current_user.moderator?(@course) %>
     <div class="manage-btns">
       <%= link_to "#{link.approved? ? "Unapprove" : "Approve"}", approve_link_path(link), :class => "btn btn-info btn-mini" %>
       <%= link_to "Delete", link_path(link), :method => :delete, :confirm => "Are you sure",:class => "btn btn-info btn-mini" %>
@@ -32,7 +32,3 @@
 <div class="span1 vote-container" id="vote_container_<%= link.id %>">
   <%= render "links/vote", :link => link %>
 </div>
-
-
-
-

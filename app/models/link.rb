@@ -19,7 +19,7 @@ class Link < ActiveRecord::Base
       if uri.host.include?("youtube.com")
         self.url = self.url.gsub("feature=player_embedded&", "")
       end
-    rescue URI::InvalidURIError
+    rescue
       return false
     end
   end

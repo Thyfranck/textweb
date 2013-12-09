@@ -14,7 +14,7 @@ ActiveAdmin.register Course do
     column :name
     column :title
     column "Topics" do |c|
-      link_to "Topics", admin_school_course_topics_path(c.school.id, c.id)
+      link_to "Topics", admin_school_course_topics_path(c.school.id, c.friendly_id)
     end
     column "Moderators" do |c|
       link_to "Admins", admin_school_course_moderators_path(c.school.id, c.id)

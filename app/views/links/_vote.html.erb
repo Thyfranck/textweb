@@ -1,5 +1,5 @@
 <div class="row-fluid">
-  <% if link.user_id == current_user.id %>
+  <% if current_user and link.user_id == current_user.id %>
 
     <div class="arrow-up deactive"></div>
     <div class="arrow-text">
@@ -9,7 +9,7 @@
 
   <% else %>
 
-    <% if link.up_voted_by(current_user) %>
+    <% if current_user and link.up_voted_by(current_user) %>
       <div class="arrow-up active"></div>
     <% else %>
       <%= link_to vote_link_path(link, :rate => "up"), :remote => true do %>
@@ -21,7 +21,7 @@
       <%= link.vote || 0 %>
     </div>
 
-    <% if link.down_voted_by(current_user) %>
+    <% if current_user and link.down_voted_by(current_user) %>
       <div class="arrow-down active"></div>
     <% else %>
       <%= link_to vote_link_path(link, :rate => "down"), :remote => true do %>
