@@ -6,12 +6,13 @@
     <div class="span8">
       <%= r.content %>
     </div>
-
-    <div class="span1">
-      <% if r.user == current_user or current_user.moderator?(@course) %>
-        <%= link_to "x", reply_path(r), :method => :delete, :confirm => "Are you sure want to delete this thread?", :class => "close", :title => "Remove" %>
-      <% end %>
-    </div>   
+    <% if current_user %>
+      <div class="span1">
+        <% if r.user == current_user or current_user.moderator?(@course) %>
+          <%= link_to "x", reply_path(r), :method => :delete, :confirm => "Are you sure want to delete this thread?", :class => "close", :title => "Remove" %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 
   <div class="row-fluid">

@@ -1,4 +1,6 @@
 class RepliesController < ApplicationController
+  before_filter :require_login
+
   def create
     @reply = current_user.replies.new(params[:reply])
     @reply.save and redirect_to request.referrer
