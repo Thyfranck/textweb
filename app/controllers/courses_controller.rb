@@ -12,12 +12,12 @@ class CoursesController < ApplicationController
     
     if params[:topic_id]
       @topic = Topic.find(params[:topic_id])
-      @topic_id = params[:topic_id].present? ? params[:topic_id] : (@topics.size > 0 ? @topics.first.id : nil)
+      @topic_id = params[:topic_id].present? ? @topic.id : (@topics.size > 0 ? @topics.first.id : nil)
     end
     
     if params[:section_id]
       @section = Section.find(params[:section_id])
-      @section_id = params[:section_id]
+      @section_id = @section.id
       @approved_links = @section.links.where(:status => Link::STATUS[:approved]).order("id DESC")
       @unapproved_links = @section.links.where(:status => nil).order("id DESC")
     end
