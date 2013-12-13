@@ -6,6 +6,17 @@ ActiveAdmin.register Course do
   filter :name
   filter :title
   filter :created_at
+
+  form do |f|
+    f.inputs "" do
+      f.input :school
+      f.input :name
+      f.input :title
+      f.input :description
+      f.input :image
+    end
+    f.actions
+  end
   
   index do
     selectable_column

@@ -11,6 +11,7 @@
         <div class="row-fluid">
           <div class="span4">
             <%= image_tag @course.image_url if @course.image.present? %>
+            <%= image_tag "default.jpg" if @course.image.blank? %>
           </div>
           <div class="span8" style="color: #777777;">
             <%= @course.description if @course.description.present? %>

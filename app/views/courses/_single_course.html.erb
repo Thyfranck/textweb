@@ -3,14 +3,18 @@
     <div class="single-course-name">
       <%= course.name %>
     </div>
-  <% if course.title.present? %>
-    <div class="single-course-title">
-      <%= course.title %>
-    </div>
-  <% end %>
+    <% if course.title.present? %>
+      <div class="single-course-title">
+        <%= course.title %>
+      </div>
+    <% end %>
     <% if course.image.present? %>
       <div class="single-course-image">
         <%= image_tag course.image_url   %>
+      </div>
+    <% else %>
+      <div class="single-course-image">
+        <%= image_tag "default.jpg"   %>
       </div>
     <% end %>
   <% end %>
