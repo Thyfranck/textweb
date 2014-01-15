@@ -7,17 +7,15 @@
         <span class="icon-bar"></span>
       </a>
 
-      <%= link_to current_user.present? ? home_schools_path : root_path, :class => "brand" do %>
-        <span style="color: green">C</span>ourse <span style="color: lightblue">L</span>inks
-      <% end %>
+      <%= link_to image_tag("logo.png"), (current_user.present? ? home_schools_path : root_path), :class => "brand" %>
 
-      <div class="nav-collapse">
-        <ul class="nav">
-          <li>
-            <div class="slogan">"Learn more."</div>
-          </li>
-        </ul>
-      </div>
+<%#*<div class="nav-collapse">%>
+<%#*<ul class="nav">%>
+<%#*<li>%>
+<%#*<div class="slogan">"Learn more."</div>%>
+<%#*</li>%>
+<%#*</ul>%>
+<%#*</div>%>
 
       <div class="nav-collapse suggest-course-menu">
         <ul class="nav" style="margin-right: 0px;">
