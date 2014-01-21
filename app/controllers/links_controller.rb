@@ -1,10 +1,10 @@
 class LinksController < ApplicationController
-  before_filter :require_login, :except => [:show, :vote]
+  before_filter :require_login, :except => [:show, :vote, :download]
   
   def create
     @link = current_user.links.new(params[:link])
     unless @link.save
-      flash[:alert] = "Please enter a valid url!"
+      flash[:alert] = @link.errors.full_messages.join(", ")
     end
     redirect_to request.referrer
   end
@@ -54,6 +54,12 @@ class LinksController < ApplicationController
     @topics = @course.topics
     @topic_id = @topic.id
     @youtube_link = @link.youtube?
+  end
+
+  def download
+    @link = Link.find(params[:id])
+    path = "#{Rails.root}#{@link.file.url}"
+    send_file path, :type => @link.mime, :disposition => @link.disposition
   end
 
   def approve

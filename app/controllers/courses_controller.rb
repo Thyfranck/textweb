@@ -18,8 +18,8 @@ class CoursesController < ApplicationController
     if params[:section_id]
       @section = Section.find(params[:section_id])
       @section_id = @section.id
-      @approved_links = @section.links.where(:status => Link::STATUS[:approved]).order("id DESC")
-      @unapproved_links = @section.links.where(:status => nil).order("id DESC")
+      @approved_links = @section.links.where(:status => Link::STATUS[:approved]).includes(:votes).order("id DESC")
+      @unapproved_links = @section.links.where(:status => nil).includes(:votes).order("id DESC")
     end
     @new_link = Link.new
   end

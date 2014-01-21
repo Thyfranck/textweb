@@ -366,13 +366,9 @@ h1,h2,h3,h4 {
 }
 
 .frame-wrapper {
-    /*    margin-top: 50px;*/
-
     position: relative;
-    padding-bottom: 56.25%; /* 16:9 */
     padding-top: 25px;
-    height: 0;
-
+    padding-bottom: 56px;
 }
 
 .frame-wrapper #ytplayer {
@@ -381,6 +377,10 @@ h1,h2,h3,h4 {
     left: 0;
     width: 80%;
     height: 80%;
+}
+
+.frame-wrapper img.upload-picture{
+   max-width: 750px;
 }
 
 .single-res {
@@ -471,6 +471,18 @@ div.underline {
 
 .item .single-course-image img{
     height: 228px;
+}
+
+a#open-submit-link,
+button#close-submit-link{
+    outline: none;
+    -moz-outline-style: none;
+}
+
+.field-notice{
+    color: #AF3656;
+    font-size: 12px;
+    padding: 2px;
 }
 
 .list-group-item {

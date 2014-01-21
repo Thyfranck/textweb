@@ -39,6 +39,7 @@ Courselinks::Application.routes.draw do
     member do
       get :vote
       get :approve
+      get :download
     end
   end
 

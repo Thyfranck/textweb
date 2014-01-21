@@ -15,8 +15,7 @@
         <%="#{time_ago_in_words(link.created_at)} ago "%>
       </div>
       <div class="span4">
-        Reference:
-        <%= link.host %>
+        <%= link.url.present? ? "Reference: #{link.host}" : "Type: #{link.mime.capitalize}" %>
       </div>
     </div>
   <% end %>

@@ -31,10 +31,13 @@ $(document).ready(function(){
     });
 
 
-    $("#submit-toggle").click(function(){
-        $('.toggle-form').slideToggle('slow', function() {
-            // Animation complete.
-            });
+    $("#open-submit-link").click(function(){
+        $('#new_link').slideToggle('slow');
+    });
+
+    $("#close-submit-link").click(function(){
+        $('#new_link').hide('slow');
+        return false;
     });
 
     $('.toggle-form').submit(function() {

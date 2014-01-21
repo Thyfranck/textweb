@@ -1,26 +1,29 @@
 class Link < ActiveRecord::Base
-  attr_accessible :section_id, :user_id, :url, :description, :vote, :status
+  mount_uploader :file, FileUploader
+  
+  attr_accessible :section_id, :user_id, :url, :description, :vote, :status, :file
   
   belongs_to :section
   belongs_to :user
   has_many :comments, :dependent => :destroy
   has_many :votes,    :dependent => :destroy
 
-  validates :section_id,  :presence => true
-  validates :user_id,     :presence => true
-  validates :url,         :presence => true, :format => { :with => /(^$)|([a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$)/ix }
+  validates :url, :presence => true, :format => { :with => /(^$)|([a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$)/ix },
+    :if => lambda{ |l| l.url.present? or l.file.blank? }
   validates :description, :presence => true
 
   before_save :check_validity
 
   def check_validity
-    begin
-      uri = URI.parse(self.url)
-      if uri.host.include?("youtube.com")
-        self.url = self.url.gsub("feature=player_embedded&", "")
+    if self.url.present?
+      begin
+        uri = URI.parse(self.url)
+        if uri.host.include?("youtube.com")
+          self.url = self.url.gsub("feature=player_embedded&", "")
+        end
+      rescue
+        return false
       end
-    rescue
-      return false
     end
   end
 
@@ -34,9 +37,31 @@ class Link < ActiveRecord::Base
     self.host
   end
 
+  def mime
+    MIME::Types.type_for(self.file.url).first.content_type
+  end
+
+  def disposition
+    extension = self.file.file.extension.downcase
+    if %w{jpg jpeg gif png pdf}.include?(extension)
+      disposition = 'inline'
+    else
+      disposition = 'attachment'
+    end
+    disposition
+  end
+
+  def picture?
+    mime.downcase.include?("image")
+  end
+
   def youtube?
-    uri = URI.parse(iframe_url)
-    uri.host =~ /youtube\.com/
+    if self.url.present?
+      uri = URI.parse(iframe_url)
+      uri.host =~ /youtube\.com/
+    else
+      return false
+    end
   end
 
   def iframe_url

@@ -28,28 +28,42 @@
           <h4>No link submitted yet. Would you like to post a link under this section?</h4>
         </legend>
       <% end %>
-      <div class="span12 well" style="max-height: 300px; margin-left: 0px">
+      <div class="row-fluid">
         <legend>
-          <%= link_to "Submit Link", "javascript:void(0)", :class => "btn btn-primary", :id => "submit-toggle" %>
+          <%= link_to "Submit Link", "javascript:void(0)", :class => "btn btn-primary", :id => "open-submit-link" %>
         </legend>
-        <%= form_for @new_link, :html => { :class => 'form-horizontal toggle-form' } do |f| %>
-          <%= f.hidden_field :section_id, :value => @section.id %>
-          <div class="control-group">
-            <%= f.label :url, :class => 'control-label' %>
-            <div class="controls">
-              <%= f.text_field :url, :class => 'text_field',:required => true %>
+        <div class="span8">
+          <%= form_for @new_link, :html => { :class => 'form-horizontal toggle-form' } do |f| %>
+            <%= f.hidden_field :section_id, :value => @section.id %>
+            <div class="control-group">
+              <%= f.label :url, "Link Url", :class => 'control-label' %>
+              <div class="controls">
+                <%= f.text_field :url, :class => 'text_field' %>
+              </div>
             </div>
-          </div>
-          <div class="control-group">
-            <%= f.label :description, :class => 'control-label' %>
-            <div class="controls">
-              <%= f.text_area :description, :class => 'text_field', :rows => '2', :required => true %>
+            <div class="control-group">
+              <%= f.label :file, "Document", :class => 'control-label' %>
+              <div class="controls">
+                <span class="btn btn-file">
+                  <%= f.file_field :file, :class => 'text_field' %>
+                </span>
+                <div class="field-notice">
+                  Upload PDF / Word Document / PowerPoint Slide / Picture
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="form-actions">
-            <%= f.submit "Submit", :class => 'btn btn-primary' %>
-          </div>
-        <% end %>
+            <div class="control-group">
+              <%= f.label :description, :class => 'control-label' %>
+              <div class="controls">
+                <%= f.text_area :description, :class => 'text_field', :rows => '2', :required => true %>
+              </div>
+            </div>
+            <div class="form-actions">
+              <%= f.submit "Submit", :class => 'btn btn-primary' %>
+              <button id="close-submit-link" class="btn btn-info">Close</button>
+            </div>
+          <% end %>
+        </div>
       </div>
     <% end %>
   </div>
