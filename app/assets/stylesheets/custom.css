@@ -450,6 +450,14 @@ div.underline {
     display: block;
     font-size: 14px;
     border-top: 1px solid #cccccc;
+    height: 30px;
+    line-height: 34px;
+}
+
+.item .single-course-title span{
+    display:inline-block;
+    vertical-align:middle;
+    line-height: normal;
 }
 
 .item .single-course-image {
