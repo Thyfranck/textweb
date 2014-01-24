@@ -92,4 +92,13 @@ namespace :deploy do
   task :db_migrate, :roles => :app do
     run "cd #{current_path};RAILS_ENV=#{rails_env} bundle exec rake db:migrate"
   end
+
+  desc "tail production log files"
+  task :tail_logs, :roles => :app do
+    trap("INT") { puts 'Interupted'; exit 0; }
+    run "tail -f #{shared_path}/log/#{rails_env}.log" do |channel, stream, data|
+      puts "#{channel[:host]}: #{data}"
+      break if stream == :err
+    end
+  end
 end

@@ -59,7 +59,7 @@ class LinksController < ApplicationController
   def download
     @link = Link.find(params[:id])
     path = "#{Rails.root}#{@link.file.url}"
-    send_file path, :type => @link.mime, :disposition => @link.disposition
+    send_file path, :filename => "#{@link.section.name}_#{@link.id}.#{@link.file_extension}"
   end
 
   def approve

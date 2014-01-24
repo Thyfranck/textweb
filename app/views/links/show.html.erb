@@ -49,7 +49,7 @@
           <% if @link.picture? %>
             <%= image_tag(@link.file.url, :class => "upload-picture") %>
           <% else %>
-            <%= link_to "Download Document", download_link_path(@link), :target => "_blank" %>
+            <%= link_to "Download Document", "#{root_url.chop}#{@link.file.url}", :target => "_blank" %>
           <% end %>
         </div>
       <% end %>

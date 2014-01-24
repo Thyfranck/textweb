@@ -69,6 +69,6 @@ Courselinks::Application.configure do
     :email => {
     :email_prefix => "[Exception]",
     :sender_address => %{"Courselinks" <exception.notifier@courselinks.com>},
-    :exception_recipients => %w{mithu@iconsbd.com, mithu.cste.30@gmail.com}
+    :exception_recipients => %w{mithu@iconsbd.com}
   }
 end

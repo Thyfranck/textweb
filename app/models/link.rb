@@ -41,6 +41,10 @@ class Link < ActiveRecord::Base
     MIME::Types.type_for(self.file.url).first.content_type
   end
 
+  def file_extension
+    self.file.file.extension.downcase
+  end
+
   def disposition
     extension = self.file.file.extension.downcase
     if %w{jpg jpeg gif png pdf}.include?(extension)
