@@ -68,7 +68,7 @@ Courselinks::Application.configure do
   config.middleware.use ExceptionNotification::Rack,
     :email => {
     :email_prefix => "[Exception]",
-    :sender_address => %{"Courselinks" <exception.notifier@courselinks.com>},
-    :exception_recipients => %w{mithu@iconsbd.com}
+    :sender_address => %{"Courselinks" <info@courselinks.co>},
+    :exception_recipients => %w{maruf@iconsbd.com}
   }
 end
