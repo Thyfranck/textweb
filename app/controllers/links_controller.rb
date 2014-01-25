@@ -56,12 +56,6 @@ class LinksController < ApplicationController
     @youtube_link = @link.youtube?
   end
 
-  def download
-    @link = Link.find(params[:id])
-    path = "#{Rails.root}#{@link.file.url}"
-    send_file path, :filename => "#{@link.section.name}_#{@link.id}.#{@link.file_extension}"
-  end
-
   def approve
     @link = Link.find(params[:id])
     if current_user.moderator?(@link.section.topic.course)
