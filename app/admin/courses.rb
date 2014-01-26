@@ -7,6 +7,8 @@ ActiveAdmin.register Course do
   filter :title
   filter :created_at
 
+  actions :all, :except => [:new]
+
   form do |f|
     f.inputs "" do
       f.input :school
@@ -36,6 +38,17 @@ ActiveAdmin.register Course do
 
   controller do
     nested_belongs_to :school
+    layout 'active_admin',  :only => [:create]
+
+    def create
+      @school = School.find(params[:school_id])
+      @course = @school.courses.new(params[:course])
+      if @course.save
+        redirect_to admin_school_path(@school)
+      else
+        render :action => :new, :layout => false
+      end
+    end
   end
 
 end

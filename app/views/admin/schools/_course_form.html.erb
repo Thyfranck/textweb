@@ -1,0 +1,10 @@
+<%= semantic_form_for Course.new, :url => admin_school_courses_path(@school), :html => {:style => "display: none"} do |f| %>
+  <%= f.hidden_field :school_id, :value => @school.id %>
+  <%= f.inputs do %>
+    <%= f.input :name %>
+    <%= f.input :title %>
+    <%= f.input :description, :input_html => {:rows => 2} %>
+    <%= f.input :image %>
+  <% end %>
+  <%= f.actions :submit, :cancel %>
+<% end %>
