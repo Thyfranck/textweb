@@ -53,7 +53,7 @@ ActiveAdmin.register School do
               tr :class => index.odd? ? "odd" : "even" do
                 td do 
                   span link_to "+", "javascript:;", :class => "toggle-list", :style => "text-decoration: none; font-size: 17px;margin-right:5px;"
-                  span link_to "#{course.title} (#{course.name})", admin_school_course_path(school), :style => "text-decoration:none;color:#323537"
+                  span link_to "#{course.title} (#{course.name})", admin_school_course_path(school, course), :style => "text-decoration:none;color:#323537"
                   ul :id => "topic-list-of-#{course.id}", :style => "margin:0;padding-left: 18px;list-style-type: none;display:none" do
                     li do
                       span link_to "Add Topic", "javascript:;", :class => "expan-form", :style => "text-decoration:none;"
