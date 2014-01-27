@@ -1,0 +1,4 @@
+<% unless @topic.errors.any?  %>
+  $("form#new_topic").hide();
+  $("#topic-list").children("li:first").after("<%= escape_javascript(render "admin/topics/topic_tiny").html_safe %>");
+<% end %>

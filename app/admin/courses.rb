@@ -23,14 +23,13 @@ ActiveAdmin.register Course do
   index do
     selectable_column
     column :id
-    column :school
     column :name
     column :title
     column "Topics" do |c|
       link_to "Topics", admin_school_course_topics_path(c.school.id, c.friendly_id)
     end
     column "Moderators" do |c|
-      link_to "Admins", admin_school_course_moderators_path(c.school.id, c.id)
+      link_to "Moderators", admin_school_course_moderators_path(c.school.id, c.id)
     end
     column :created_at
     default_actions
@@ -38,7 +37,6 @@ ActiveAdmin.register Course do
 
   controller do
     nested_belongs_to :school
-    layout 'active_admin',  :only => [:create]
 
     def create
       @school = School.find(params[:school_id])

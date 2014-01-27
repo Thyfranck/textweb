@@ -26,7 +26,7 @@ ActiveAdmin.register School do
           row :updated_at
         end
 
-        panel "Statistics" do
+        panel "Statistics of #{school.name}" do
           topics = Topic.where(:course_id => school.course_ids)
           sections = Section.where(:topic_id => topics.map(&:id))
           links = Link.where(:section_id => sections.map(&:id))
@@ -40,7 +40,7 @@ ActiveAdmin.register School do
         end
       end
       column :span => 2 do
-        panel "Manage School" do
+        panel "Manage #{school.name}" do
 
           div :style => "padding-left:13px;font-size: 16px;margin-bottom:10px;" do
             link_to "Add Course", "javascript:;", :id => "add-course-btn", :style => "text-decoration:none;"
@@ -48,12 +48,24 @@ ActiveAdmin.register School do
 
           render "course_form"
 
-          table :class => "index_table index" do
+          table :id => "course-list", :class => "index_table index" do
             school.courses.reverse.each_with_index do |course, index|
               tr :class => index.odd? ? "odd" : "even" do
                 td do 
-                  span link_to "+", "javascript:;", :style => "text-decoration: none; font-size: 17px;"
-                  span "#{course.title} (#{course.name})"
+                  span link_to "+", "javascript:;", :class => "ex-course", :style => "text-decoration: none; font-size: 17px;margin-right:5px;"
+                  span link_to "#{course.title} (#{course.name})", admin_school_course_path(school), :style => "text-decoration:none;color:#323537"
+                  ul :id => "topic-list", :style => "margin:0;padding-left: 18px;list-style-type: none;display:none" do
+                    li do
+                      span link_to "Add Topic", "javascript:;", :id => "add-topic-btn", :style => "text-decoration:none;"
+                      render "topic_form", :course => course
+                    end
+                    course.topics.reverse.each do |topic|
+                      li do
+                        span link_to "+", "javascript:;", :style => "text-decoration: none; font-size: 17px;margin-right:5px;color:#AF3656"
+                        span link_to "#{topic.name}", admin_school_course_topic_path(school, course, topic), :style => "text-decoration:none;color:#323537"
+                      end
+                    end
+                  end
                 end
               end
             end

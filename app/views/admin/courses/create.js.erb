@@ -1,0 +1,6 @@
+<% if @course.errors.any? %>
+  $("form#new_course fieldset.inputs div.errors-container").remove();
+  $("form#new_course fieldset.inputs").prepend("<%= escape_javascript(render "admin/shared/error_messages", :object => @course).html_safe %>");
+<% else %>
+  $("#course-list").prepend("");
+<% end %>

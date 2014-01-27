@@ -1,0 +1,10 @@
+<div class="errors-container" style="padding-left: 10px;border:1px solid #EBCCD1;margin:0 10px 0 10px;border-radius:5px;background-color: #F2DEDE;color: #A94442;padding-top: 5px;">
+  <div style="color:#5E6469;font-weight: bold">
+    <%= pluralize(object.errors.count, "error") %> prohibited this <%= object.class.model_name.downcase %> from being saved:
+  </div>
+  <ul style="list-style-type: disc;padding-left: 16px;">
+    <% object.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
