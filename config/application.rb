@@ -56,6 +56,9 @@ module Courselinks
     # Enable the asset pipeline
     config.assets.enabled = true
 
+    #To load locale files in nested dictionaries
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
+
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
   end

@@ -1,0 +1,8 @@
+en:
+  activerecord:
+    attributes:
+      link:
+        url: Link Url
+        file: Document
+        description: Description
+        

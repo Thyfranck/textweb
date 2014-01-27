@@ -1,9 +1,8 @@
-<%= semantic_form_for Course.new, :url => admin_school_courses_path(@school), :html => {:style => "display: none"} do |f| %>
+<%= semantic_form_for Link.new, :url => admin_school_course_topic_section_links_path(@school, section.topic.course, section.topic, section), :html => {:style => "display: none", :id => "link-form-of-#{section.id}"} do |f| %>
   <%= f.inputs do %>
-    <%= f.input :name %>
-    <%= f.input :title %>
+    <%= f.input :url %>
+    <%= f.input :file %>
     <%= f.input :description, :input_html => {:rows => 2} %>
-    <%= f.input :image %>
   <% end %>
   <%= f.actions do %>
     <%= f.action :submit %>

@@ -42,11 +42,10 @@ ActiveAdmin.register School do
       column :span => 2 do
         panel "Manage #{school.name}" do
 
-          div :style => "padding-left:13px;font-size: 16px;margin-bottom:10px;" do
-            link_to "Add Course", "javascript:;", :id => "add-course-btn", :style => "text-decoration:none;"
+          div :style => "padding-left:13px;margin-bottom:10px;" do
+            span link_to "Add Course", "javascript:;", :class => "expan-form", :style => "text-decoration:none;font-size: 16px;"
+            render "course_form"
           end
-
-          render "course_form"
 
           table :id => "course-list", :class => "index_table index" do
             school.courses.reverse.each_with_index do |course, index|
@@ -62,7 +61,7 @@ ActiveAdmin.register School do
                     course.topics.reverse.each do |topic|
                       li do
                         span link_to "+", "javascript:;", :class => "toggle-list", :style => "text-decoration: none; font-size: 17px;margin-right:5px;color:#AF3656"
-                        span link_to "#{topic.name}", admin_school_course_topic_path(school, course, topic), :style => "text-decoration:none;color:#323537"
+                        span link_to topic.name, admin_school_course_topic_path(school, course, topic), :style => "text-decoration:none;color:#323537"
                         ul :id => "section-list-of-#{topic.id}", :style => "margin:0;padding-left: 18px;list-style-type: none;display:none" do
                           li do
                             span link_to "Add Section", "javascript:;", :class => "expan-form", :style => "text-decoration:none;"
@@ -71,7 +70,19 @@ ActiveAdmin.register School do
                           topic.sections.reverse.each do |section|
                             li do
                               span link_to "+", "javascript:;", :class => "toggle-list", :style => "text-decoration: none; font-size: 17px;margin-right:5px;color:#36AF56"
-                              span link_to "#{section.name}", admin_school_course_topic_section_path(school, course, topic, section), :style => "text-decoration:none;color:#323537"
+                              span link_to section.name, admin_school_course_topic_section_path(school, course, topic, section), :style => "text-decoration:none;color:#323537"
+                              ul :id => "link-list-of-#{section.id}", :style => "margin:0;padding-left: 18px;list-style-type: none;display:none" do
+                                li do
+                                  span link_to "Add Link", "javascript:;", :class => "expan-form", :style => "text-decoration:none;"
+                                  render "link_form", :section => section
+                                end
+                                section.links.reverse.each_with_index do |link, index|
+                                  li do
+                                    span "#{index + 1}. "
+                                    span link_to link.description.truncate(100), admin_school_course_topic_section_link_path(school, course, topic, section, link), :style => "text-decoration:none;color:#323537"
+                                  end
+                                end
+                              end
                             end
                           end
                         end

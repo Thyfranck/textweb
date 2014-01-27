@@ -1,11 +1,6 @@
 //= require active_admin/base
 
 $(document).ready(function(){
-    $('#add-course-btn, #course_cancel_action').on('click', function(){
-        $("form#new_course").toggle();
-        return false;
-    });
-
     $("form#new_course").on('submit', function(){
         var $name = $("input#course_name");
         if($name.val().length < 1) {

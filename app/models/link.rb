@@ -34,7 +34,7 @@ class Link < ActiveRecord::Base
   }
 
   def name
-    self.host
+    self.url.present? ? self.host : self.description.truncate(30)
   end
 
   def mime
