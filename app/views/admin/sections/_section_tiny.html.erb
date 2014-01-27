@@ -1,0 +1,8 @@
+<li>
+  <span>
+    <%= link_to "+", "javascript:;", :class => "toggle-list", :style => "text-decoration: none; font-size: 17px;margin-right:5px;color:#36AF56" %>
+  </span>
+  <span>
+    <%= link_to "#{@section.name}", admin_school_course_topic_section_path(@section.topic.course.school, @section.topic.course, @section.topic, @section), :style => "text-decoration:none;color:#323537" %>
+  </span>
+</li>

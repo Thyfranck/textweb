@@ -1,8 +1,17 @@
 <li>
   <span>
-    <%= link_to "+", "javascript:;", :style => "text-decoration: none; font-size: 17px;margin-right:5px;color:#AF3656" %>
+    <%= link_to "+", "javascript:;", :class => "toggle-list", :style => "text-decoration: none; font-size: 17px;margin-right:5px;color:#AF3656" %>
   </span>
   <span>
-    <%= link_to "#{@topic.name}", "", :style => "text-decoration:none;color:#323537" %>
+    <%= link_to "#{@topic.name}", admin_school_course_topic_path(@topic.course.school, @topic.course, @topic), :style => "text-decoration:none;color:#323537" %>
   </span>
+
+  <ul style="margin:0;padding-left: 18px;list-style-type: none;display:none" id="section-list-of-<%= @topic.id %>">
+    <li>
+      <span>
+        <a style="text-decoration:none;" class="expan-form" href="javascript:;">Add Section</a>
+      </span>
+      <%= render "admin/schools/section_form", :topic => @topic %>
+    </li>
+  </ul>
 </li>

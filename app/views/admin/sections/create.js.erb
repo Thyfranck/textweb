@@ -1,0 +1,4 @@
+<% unless @section.errors.any?  %>
+  $("form#section-form-of-<%= @section.topic.id %>").hide();
+  $("#section-list-of-<%= @section.topic.id %>").children("li:first").after("<%= escape_javascript(render "admin/sections/section_tiny").html_safe %>");
+<% end %>

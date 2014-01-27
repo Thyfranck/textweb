@@ -1,12 +1,12 @@
 //= require active_admin/base
 
 $(document).ready(function(){
-    $('#add-course-btn, #course_cancel_action').click(function(){
+    $('#add-course-btn, #course_cancel_action').on('click', function(){
         $("form#new_course").toggle();
         return false;
     });
 
-    $("form#new_course").submit(function(){
+    $("form#new_course").on('submit', function(){
         var $name = $("input#course_name");
         if($name.val().length < 1) {
             $name.parent("li").addClass("error");
@@ -16,40 +16,47 @@ $(document).ready(function(){
         }
         return true;
     });
+});
 
-    $("a.ex-course").click(function(){
-        var html = $(this).html();
-        if(html == "+") $(this).html("&minus;");
-        else $(this).html("+");
-        
-        $(this).parent("span").siblings("ul").toggle();
+$(document).on("click", "a.toggle-list", function(){
+    var html = $(this).html();
+    if(html == "+") $(this).html("&minus;");
+    else $(this).html("+");
+    var $list = $(this).parent("span").siblings("ul");
+    $list.toggle();
+});
+
+$(document).on("click", ".expan-form", function(){
+    var $form = $(this).parent('span').siblings('form');
+    $form.toggle();
+    return false;
+});
+
+$(document).on("click", ".close-form", function(){
+    var $form = $(this).parent('li').parent('ol').parent('fieldset').parent('form');
+    $form.toggle();
+    return false;
+});
+
+$(document).on("submit", "form.topic, form.section", function(){
+    var $form = $(this);
+    var form_id = $form.attr("id");
+    var $name = $("#"+form_id+" input.name-field");
+
+    $name.parent("li").removeClass("error");
+    $name.siblings("p.inline-errors").remove();
+
+    if($name.val().length < 1) {
+        $name.parent("li").addClass("error");
+        $name.after("<p class=\"inline-errors\">can't be blank</p>");
+    }
+
+    $.ajax({
+        type: 'POST',
+        url: $form.attr("action"),
+        data: $form.serialize(),
+        dataType: "script"
     });
 
-
-    $("#add-topic-btn, #topic_cancel_action").click(function(){
-        $("form#new_topic").toggle();
-        return false;
-    });
-    
-    $("form#new_topic").submit(function(){
-        var $name = $("input#topic_name");
-        $name.parent("li").removeClass("error");
-        $name.siblings("p.inline-errors").remove();
-        
-        if($name.val().length < 1) {
-            $name.parent("li").addClass("error");
-            $name.after("<p class=\"inline-errors\">can't be blank</p>");
-        }
-
-        var url = "/admin/schools/1/courses/cse-103/topics"
-        $.ajax({
-            type: 'POST',
-            url: url,
-            data: $(this).serialize(),
-            dataType: "script"
-        });
-
-        return false;
-    });
-
-})
+    return false;
+});

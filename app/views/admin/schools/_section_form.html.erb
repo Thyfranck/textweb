@@ -1,4 +1,4 @@
-<%= semantic_form_for Topic.new, :url => admin_school_course_topics_path(@school, course), :html => {:style => "display: none", :id => "topic-form-of-#{course.id}"} do |f| %>
+<%= semantic_form_for Section.new, :url => admin_school_course_topic_sections_path(@school, topic.course, topic), :html => {:style => "display: none", :id => "section-form-of-#{topic.id}"} do |f| %>
   <%= f.inputs do %>
     <%= f.input :name, :input_html => {:class => "name-field"} %>
   <% end %>

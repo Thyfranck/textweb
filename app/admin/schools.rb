@@ -52,17 +52,29 @@ ActiveAdmin.register School do
             school.courses.reverse.each_with_index do |course, index|
               tr :class => index.odd? ? "odd" : "even" do
                 td do 
-                  span link_to "+", "javascript:;", :class => "ex-course", :style => "text-decoration: none; font-size: 17px;margin-right:5px;"
+                  span link_to "+", "javascript:;", :class => "toggle-list", :style => "text-decoration: none; font-size: 17px;margin-right:5px;"
                   span link_to "#{course.title} (#{course.name})", admin_school_course_path(school), :style => "text-decoration:none;color:#323537"
-                  ul :id => "topic-list", :style => "margin:0;padding-left: 18px;list-style-type: none;display:none" do
+                  ul :id => "topic-list-of-#{course.id}", :style => "margin:0;padding-left: 18px;list-style-type: none;display:none" do
                     li do
-                      span link_to "Add Topic", "javascript:;", :id => "add-topic-btn", :style => "text-decoration:none;"
+                      span link_to "Add Topic", "javascript:;", :class => "expan-form", :style => "text-decoration:none;"
                       render "topic_form", :course => course
                     end
                     course.topics.reverse.each do |topic|
                       li do
-                        span link_to "+", "javascript:;", :style => "text-decoration: none; font-size: 17px;margin-right:5px;color:#AF3656"
+                        span link_to "+", "javascript:;", :class => "toggle-list", :style => "text-decoration: none; font-size: 17px;margin-right:5px;color:#AF3656"
                         span link_to "#{topic.name}", admin_school_course_topic_path(school, course, topic), :style => "text-decoration:none;color:#323537"
+                        ul :id => "section-list-of-#{topic.id}", :style => "margin:0;padding-left: 18px;list-style-type: none;display:none" do
+                          li do
+                            span link_to "Add Section", "javascript:;", :class => "expan-form", :style => "text-decoration:none;"
+                            render "section_form", :topic => topic
+                          end
+                          topic.sections.reverse.each do |section|
+                            li do
+                              span link_to "+", "javascript:;", :class => "toggle-list", :style => "text-decoration: none; font-size: 17px;margin-right:5px;color:#36AF56"
+                              span link_to "#{section.name}", admin_school_course_topic_section_path(school, course, topic, section), :style => "text-decoration:none;color:#323537"
+                            end
+                          end
+                        end
                       end
                     end
                   end
